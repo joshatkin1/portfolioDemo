@@ -5,11 +5,26 @@
       <change afterPath="$PROJECT_DIR$/../masterplan/resources/js/route.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../masterplan/resources/js/store.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../masterplan/resources/views/home.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/layouts/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/masterplan.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/masterplan.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AppController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AppController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DeviceVerificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DeviceVerificationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/LimitUserToOneDevice.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/LimitUserToOneDevice.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/AccountDeviceVerification.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/AccountDeviceVerification.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/cache.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/cache.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/global.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/main.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/main.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/home.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,6 +149,7 @@
       <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
       <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
       <path value="$PROJECT_DIR$/vendor/league/commonmark" />
+      <path value="$PROJECT_DIR$/vendor/predis/predis" />
     </include_path>
   </component>
   <component name="ProjectId" id="1ijRMTOnWcMCV9ugmBUff7Nq8no" />
@@ -182,7 +198,9 @@
       <workItem from="1602693852815" duration="7817000" />
       <workItem from="1603022439572" duration="339000" />
       <workItem from="1603023152252" duration="1014000" />
-      <workItem from="1603025238825" duration="584000" />
+      <workItem from="1603025238825" duration="8332000" />
+      <workItem from="1603043023115" duration="89000" />
+      <workItem from="1603272190168" duration="11040000" />
     </task>
     <servers />
   </component>
@@ -194,9 +212,14 @@
       <screen x="0" y="23" width="1440" height="807" />
     </state>
     <state x="297" y="23" width="502" height="807" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1440.807@0.23.1440.807" timestamp="1602433496988" />
-    <state x="286" y="179" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1602774584161">
-      <screen x="0" y="23" width="1440" height="807" />
+    <state x="286" y="178" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1603351829244">
+      <screen x="0" y="23" width="1440" height="803" />
     </state>
+    <state x="286" y="178" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1440.803@0.23.1440.803" timestamp="1603351829244" />
     <state x="286" y="179" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1440.807@0.23.1440.807" timestamp="1602774584161" />
+    <state x="382" y="150" width="670" height="676" key="search.everywhere.popup" timestamp="1603352152680">
+      <screen x="0" y="23" width="1440" height="803" />
+    </state>
+    <state x="382" y="150" width="670" height="676" key="search.everywhere.popup/0.23.1440.803@0.23.1440.803" timestamp="1603352152680" />
   </component>
 </project>

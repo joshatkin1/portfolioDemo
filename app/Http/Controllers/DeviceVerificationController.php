@@ -6,8 +6,10 @@ use App\Mail\VerificationCodeEmail;
 use App\Models\AccountDeviceVerification;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Response;
@@ -84,14 +86,16 @@ class DeviceVerificationController extends Controller
         foreach ($codes as $code){
 
             if($code->code === $c){
-                $deviceCookie = $accountDeviceVerification->addThisDeviceToVerifiedList();
+
                 session(['device_auth' => true]);
 
-                Cookie::queue(
-                    'deviceVerificationKey',
-                    $deviceCookie,
-                    9999999999
-                );
+                $deviceCookie = $accountDeviceVerification->addThisDeviceToVerifiedList();
+
+                Cookie::queue('deviceVerificationKey', $deviceCookie, 999999999);
+                $redis = Redis::connection();
+                $redis->set(session('id') . ':deviceVerificationKey', $device_verf_cookie);
+
+                //NEED TO STORE COOKIE IN CACHE!!!!
 
                 return Redirect::route('app');
             }

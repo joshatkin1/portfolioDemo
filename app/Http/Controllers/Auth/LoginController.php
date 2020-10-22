@@ -8,11 +8,13 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Redis;
 
 class LoginController extends Controller
 {
@@ -50,7 +52,7 @@ class LoginController extends Controller
 
         $request->session()->flush();
 
-        Cookie::queue(Cookie::make('email', $request->input('email'), 12321311));
+        Cookie::queue('email', $request->input('email'), 12321311);
 
         $auth_success = $this->guard()->attempt($this->credentials($request), $request->filled('remember'));
 
@@ -62,7 +64,15 @@ class LoginController extends Controller
             $this->MFArequired = true;
 
             //GET USER DEVICE ID HASH CHECK IF DEVICE IS VERIFIED AND REDIRECT TO MFA IF (IP + HTTP_USER_AGENT hashed)
-            $device_verf_cookie = Cookie::get('deviceVerificationKey');
+            if(Cookie::has('deviceVerificationKey')){
+                $device_verf_cookie = Cookie::get('deviceVerificationKey');
+                $redis = Redis::connection();
+                $redis->set($this->loginUser->id . ':deviceVerificationKey', $device_verf_cookie);
+                $this->loginUser->deviceCookie = $device_verf_cookie;
+            }else{
+                $device_verf_cookie = '-1';
+            }
+
             $user_device = $_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT'] . $device_verf_cookie;
 
             //VERIFY CURRENT USER DEVICE IS LINKED TO ACCOUNT AND AUTHORIZED
@@ -97,7 +107,13 @@ class LoginController extends Controller
         $this->clearLoginAttempts($request);
 
         //SET SESSION DATA
-        session(['loggedIn' => true ,'id' => $this->loginUser->id , 'name' => $this->loginUser->name , 'email' => $this->loginUser->email , 'job_title' => $this->loginUser->job_title]);
+        session([
+            'loggedIn' => true,
+            'id' => $this->loginUser->id,
+            'name' => $this->loginUser->name,
+            'email' => $this->loginUser->email,
+            'deviceKey' => $this->loginUser->deviceCookie,
+        ]);
 
         if($this->MFArequired === false){
             session(['device_auth' => true]);

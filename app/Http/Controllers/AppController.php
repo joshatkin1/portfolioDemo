@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Cookie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Redis;
 
 class AppController extends Controller
 {
@@ -17,6 +18,12 @@ class AppController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('userDeviceAuth');
+
+        //VERIFY USER DEVICE IS EXPECTED CURRENT DEVICE
+        $num = random_int(1,14);
+        if($num === 6){
+            $this->middleware('multiUserCheck');
+        }
     }
 
     /**

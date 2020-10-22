@@ -18,6 +18,10 @@ class AccountDeviceVerification extends Model
     protected $id;
     protected $verificationCode;
 
+    protected $casts = [
+        'verified_device_keys' => 'array',
+    ];
+
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
@@ -71,7 +75,7 @@ class AccountDeviceVerification extends Model
             ->pluck('verified_device_keys')
             ->where('id' , '=' , session('id'));
 
-        $verifiedDevices = json_decode($verifiedDevices);
+//        $verifiedDevices = json_decode($verifiedDevices);
 
         array_push($verifiedDevices, $deviceHash);
 

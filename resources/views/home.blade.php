@@ -5,12 +5,12 @@
     <section class="container">
         <div id="landingheader">
             <div class="ldngheadsec">
-                <h1 class="headertxt" style="font-size:95px;font-weight: normal;letter-spacing:4px;">softsync</h1>
-                <h3 class="headertxt" style="font-size:33px;padding-top:5px;font-weight: lighter;">synchronizing software development.</h3>
-                <p class="hm-sel-txt">softsync is a software development platform that brings together all the complicated aspects of development and project management into one simple application.</p>
+                <h1 class="headertxt" style="font-size:95px;font-weight: normal;letter-spacing:4px;">?<!--softsync--></h1>
+                <h3 class="headertxt" style="font-size:33px;padding-top:5px;font-weight: lighter;">??????????<!--synchronizing software development.--></h3>
+                <p class="hm-sel-txt">?????????<!--softsync is a software development platform that brings together all the complicated aspects of development and project management into one simple application.--></p>
             </div>
             <div class="ldngheadsec">
-                <form id="ldngpgregform" action="{{ route('register') }}" method="POST" enctype="multipart/form-data">
+                <form id="ldngpgregform" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                     @csrf
                     <h2>Create Your Account</h2>
                     <h4>join free today.</h4>
@@ -35,7 +35,7 @@
                     <div class="lndpglgninptdv">
                         <label class="lrg-inpt-lbl">Password*</label>
                         <input id="password" name="password" type="password" class="hm-reg-inpt" autocomplete="off" required/>
-                        <p style="font-size:11px;margin-top:3px;">make it atleast <span id="hm-pas-lngth-req">10 characters long </span> with <span id="hm-pas-ltr-req">1 lower case letter</span> and <span id="hm-pas-num-req">1 number</span>.</p>
+                        <p style="display:none;font-size:11px;margin-top:3px;" id="password-help">make it atleast <span id="hm-pas-lngth-req">10 characters long </span> with <span id="hm-pas-ltr-req">1 lower case letter</span> and <span id="hm-pas-num-req">1 number</span>.</p>
                         @error('password')
                         <span class="invalid-feedback" role="alert">
                           <strong>{{ $message }}</strong>
@@ -43,18 +43,12 @@
                         @enderror
                     </div>
                     <div class="lndpglgninptdv">
-                        <button id="lndgsgnupbtn" class="whitebtn">Sign up for Softsync</button>
+                        <button id="lndgsgnupbtn" class="whitebtn">Sign up for ?</button>
                         <p style="font-size:10px;margin-top:20px;letter-spacing:0.5px">By clicking Sign Up, you agree to our <a href="/terms">Terms</a>. Learn how we collect, use and share your data in our Data Policy and how we use cookies and similar technology in our Cookie Policy.</p>
                     </div>
                 </form>
             </div>
         </div>
-        <br><br><br><br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br><br><br><br>
-        ss
-
     </section>
     <style type="text/css">
         #landingheader{
@@ -143,7 +137,7 @@
             box-shadow: 1px 1px 1px 0px rgb(220,220,220);
         }
         #ldngpgregform h2 {
-            font-size:22spx;
+            font-size:22px;
             margin-bottom:5px;
         }
         #ldngpgregform h4 {
@@ -225,6 +219,7 @@
     <script type="application/javascript">
 
         var passInput = document.getElementById('password');
+        var passHelp = document.getElementById('password-help');
         var passLenReq = document.getElementById('hm-pas-lngth-req');
         var passLtrReq = document.getElementById('hm-pas-ltr-req');
         var passNumReq = document.getElementById('hm-pas-num-req');
@@ -232,6 +227,14 @@
         var LtrLowRegEx = new RegExp(/[a-z]/);
         var LtrUprRegEx = new RegExp(/[A-Z]/);
         var NumRegEx = new RegExp(/[0-9]/);
+
+        passInput.addEventListener("focus", function(){
+            passHelp.style.display = "block";
+        });
+
+        passInput.addEventListener("blur", function(){
+            passHelp.style.display = "none";
+        });
 
         passInput.addEventListener("keyup", function(){
             var value = passInput.value;
