@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class AccountDeviceVerification extends Model
 {
@@ -67,7 +68,7 @@ class AccountDeviceVerification extends Model
      */
     final public function addThisDeviceToVerifiedList(){
 
-        $cookieKey = substr(str_shuffle(str_repeat($x='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', 3 )),1,15);
+        $cookieKey = Str::random(32);
         $key = $_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT'] . $cookieKey;
         $deviceHash = Hash::make($key);
 
@@ -75,7 +76,7 @@ class AccountDeviceVerification extends Model
             ->pluck('verified_device_keys')
             ->where('id' , '=' , session('id'));
 
-//        $verifiedDevices = json_decode($verifiedDevices);
+        $verifiedDevices = json_decode($verifiedDevices);
 
         array_push($verifiedDevices, $deviceHash);
 

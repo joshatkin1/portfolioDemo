@@ -8,6 +8,7 @@ import {fetchSessionData} from '../actions/userActions.js';
 //MAJOR CONTROLLER COMPONENTS
 import NavComponent from '../components/NavComponent.js';
 import HeaderComponent from '../components/HeaderComponent.js';
+import SideNav from '../components/SideNav.js';
 
 class AppController extends Component{
     constructor(props){
@@ -32,17 +33,19 @@ class AppController extends Component{
     render(){
         return (
                 <div className={"content-wrap algn-cntr"}>
-                    <div className={"content-wrap nav-bar algn-cntr"}>
-                        <div className={"container-xl"}>
-                            <NavComponent key={v4()} />
-                        </div>
-                    </div>
                     <div className={"header-bar content-wrap algn-cntr"}>
-                        <div className={"container-xl"}>
                             <HeaderComponent key={v4()}/>
-                        </div>
                     </div>
+                    <div className={"content-wrap algn-cntr"}>
+                            <div className={"wrap-start"}>
+                                <div className={"side-nav-bar"}>
+                                    <SideNav key={v4()} />
+                                </div>
+                                <div className={"content-wrap"} style={{justifyContent:"stretch"}}>
 
+                                </div>
+                            </div>
+                    </div>
                 </div>
         );
     }

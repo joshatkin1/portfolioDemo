@@ -17,6 +17,8 @@ Route::get('/home', function () {
 //GENERTIC AUTH ROUTES
 Auth::routes();
 
+Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout']);
+
 //DEVICE VERIFICATION ROUTES
 Route::get('/verify-device', [App\Http\Controllers\DeviceVerificationController::class, 'index'])->name('device-verification');
 Route::post('/verify-device/resend-code', [App\Http\Controllers\DeviceVerificationController::class, 'resendDeviceVerificationCode']);

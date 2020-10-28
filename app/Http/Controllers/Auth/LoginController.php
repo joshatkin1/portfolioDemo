@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
@@ -63,28 +65,28 @@ class LoginController extends Controller
             $this->loginUser = $user;
             $this->MFArequired = true;
 
+            $device_verf_cookie =  $request->cookie('deviceVerificationKey');
+
             //GET USER DEVICE ID HASH CHECK IF DEVICE IS VERIFIED AND REDIRECT TO MFA IF (IP + HTTP_USER_AGENT hashed)
-            if(Cookie::has('deviceVerificationKey')){
-                $device_verf_cookie = Cookie::get('deviceVerificationKey');
+            if($device_verf_cookie && $device_verf_cookie !== "" && $device_verf_cookie !== null){
                 $redis = Redis::connection();
                 $redis->set($this->loginUser->id . ':deviceVerificationKey', $device_verf_cookie);
                 $this->loginUser->deviceCookie = $device_verf_cookie;
-            }else{
-                $device_verf_cookie = '-1';
-            }
 
-            $user_device = $_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT'] . $device_verf_cookie;
+                $user_device = $_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT'] . $device_verf_cookie;
 
-            //VERIFY CURRENT USER DEVICE IS LINKED TO ACCOUNT AND AUTHORIZED
-            if($user->verified_device_keys){
-                foreach($user->verified_device_keys as $deviceHash){
-                    if (Hash::check($user_device , $deviceHash)) {
-                        //IF DEVICE IS ALREADY AUTHENTICATED SET MULTI FACTOR NOT REQUIRED
-                        session(['device_auth' => true]);
-                        $this->MFArequired = false;
-                        break;
+                //VERIFY CURRENT USER DEVICE IS LINKED TO ACCOUNT AND AUTHORIZED
+                if($user->verified_device_keys){
+                    foreach($user->verified_device_keys as $deviceHash){
+                        if (Hash::check($user_device , $deviceHash)) {
+                            //IF DEVICE IS ALREADY AUTHENTICATED SET MULTI FACTOR NOT REQUIRED
+                            session(['device_auth' => true]);
+                            $this->MFArequired = false;
+                            break;
+                        }
                     }
                 }
+
             }
 
             return true;
@@ -125,5 +127,21 @@ class LoginController extends Controller
             Mail::to(session('email'))->send(new VerificationCodeEmail($code));
             return redirect('/verify-device');
         }
+    }
+
+    /**
+     * Log the user out of the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
+     */
+    public function logout (Request $request) {
+        //logout user
+        auth()->logout();
+        $request->session()->flush();
+        Redis::del(session('id') . ':deviceVerificationKey');
+        Redis::del(session('id') . ':multiDeviceClash');
+        // redirect to homepage
+        return redirect('/');
     }
 }

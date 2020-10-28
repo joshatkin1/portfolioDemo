@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { v4 } from 'uuid';
+import SyncSoftLogo from '../../../public/images/syncsoft.svg';
+import AccountButton from '../components/AccountButton.js';
 
 class HeaderComponent extends Component{
     constructor(props){
@@ -12,9 +14,7 @@ class HeaderComponent extends Component{
         }
     }
 
-    componentDidMount() {
-
-    }
+    componentDidMount() {}
 
     shouldComponentUpdate(nextProps, nextState, nextContext) {
         return false;
@@ -24,10 +24,10 @@ class HeaderComponent extends Component{
         return (
             <header className={"header-bar container-row wrap-middle algn-cntr"}>
                     <div className={"col-3 wrap-start algn-cntr"}>
-                        <p>logo</p>
+                       <img src={SyncSoftLogo} alt="syncsoft" style={{marginLeft:"20px",marginTop:"-10px"}} />
                     </div>
                     <div className={"col-9 wrap-end algn-cntr"}>
-                        <p>notifications</p>
+                        <AccountButton key={v4()} />
                     </div>
             </header>
         );
@@ -35,11 +35,9 @@ class HeaderComponent extends Component{
 }
 
 HeaderComponent.propTypes = {
-    sessionData: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
-    sessionData: state.user.sessionData,
 });
 
 export default connect(mapStateToProps , {})(HeaderComponent);

@@ -32,13 +32,13 @@
                 <h1 class="headertxt" style="font-size:40px;font-weight: normal;color: #7B10DA;">∞</h1>
             </a>
             <div id="pagenavs">
-                <a class="pagenavbtns">Pricing</a>
+                <a href="/product-price" class="pagenavbtns">Pricing</a>
             </div>
         </nav>
 
         @guest
             <nav class="nw-cus-arvl-nav">
-                <a class="hm-sgn-btns">Sign In</a>
+                <a href="{{ route('login') }}" class="hm-sgn-btns">Sign In</a>
             </nav>
         @else
 

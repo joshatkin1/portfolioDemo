@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Cookie;
 
 class DeviceVerificationController extends Controller
 {
@@ -91,13 +90,10 @@ class DeviceVerificationController extends Controller
 
                 $deviceCookie = $accountDeviceVerification->addThisDeviceToVerifiedList();
 
-                Cookie::queue('deviceVerificationKey', $deviceCookie, 999999999);
                 $redis = Redis::connection();
-                $redis->set(session('id') . ':deviceVerificationKey', $device_verf_cookie);
+                $redis->set(session('id') . ':deviceVerificationKey', $deviceCookie);
 
-                //NEED TO STORE COOKIE IN CACHE!!!!
-
-                return Redirect::route('app');
+                return Redirect::route('app')->withCookie('deviceVerificationKey', $deviceCookie, 999999999);
             }
         }
 

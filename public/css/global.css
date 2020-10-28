@@ -1,4 +1,4 @@
-/*@import url(https://fonts.googleapis.com/css?family=Serenity);@charset "UTF-8";*/
+@import url(https://fonts.googleapis.com/css?family=Serenity|Product+Sans);@charset "UTF-8";
 /*GLOBAL STYLINGS*/
 *{
     margin:0;
@@ -16,6 +16,9 @@ body{
     text-align: left;
     letter-spacing:1px;
     background-color: rgb(252,252,253);
+}
+div{
+    outline: none;
 }
 h1{font-size:80px;letter-spacing:6px;}
 h2{font-size:70px;letter-spacing:4px;}
@@ -78,6 +81,7 @@ textarea {
     font-family: inherit;
     font-size: inherit;
     line-height: inherit;
+    outline: none;
 }
 input, textarea{
     outline: none;
@@ -304,22 +308,125 @@ textarea {
 }
 .nav-bar{
     width:100%;
-    height:28px;
+    height:26px;
     background-color:rgb(241,241,245);
     background: -o-linear-gradient(180deg, rgb(250,250,250), white, rgb(240,240,240));
     background: -ms-linear-gradient(180deg, rgb(250,250,250), white, rgb(240,240,240));
     background: -moz-linear-gradient(180deg, rgb(250,250,250), white, rgb(240,240,240));
     background: linear-gradient(180deg, rgb(250,250,250), white, rgb(240,240,240));
     background: -webkit-linear-gradient(270deg, rgb(250,250,250), white, rgb(240,240,240));
-    border-bottom: solid 0.5px lightgray;
+    border-bottom: solid 0.5px rgb(220,220,220);
 }
 .header-bar{
-    height:65px;
-    background-color:rgb(241,241,245);
-    background: -o-linear-gradient(180deg, rgb(250,250,250), rgb(252), rgb(245,245,245));
-    background: -ms-linear-gradient(180deg, rgb(250,250,250), rgb(252), rgb(245,245,245));
-    background: -moz-linear-gradient(180deg, rgb(250,250,250), rgb(252), rgb(245,245,245));
-    background: linear-gradient(180deg, rgb(250,250,250), rgb(252), rgb(245,245,245));
-    background: -webkit-linear-gradient(270deg, rgb(250,250,250), rgb(252), rgb(245,245,245));
-    border-bottom: solid 0.5px lightgray;
+    height:55px;
+    background-color:white;
+    border-bottom: solid 0.5px rgb(245,245,245);
+}
+.side-nav-bar{
+    width:100%;
+    max-width:230px;
+    height:calc(100vh - 60px);
+    background-color:white;
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border-right:solid 1px rgb(240,240,240);
+}
+.side-nav-btn{
+    width:calc(100% - 3px);
+    background-color: white;
+    padding:16px 30px;
+    font-size:13.5px;
+    font-family: "Products Sans", Helvetica, Arial, sans-serif;
+    color:#7B10DA;
+    border:none;
+    border-top:solid 0.5px rgb(240,240,240);
+    border-right:solid 3px white;
+    text-align: left;
+    letter-spacing: 1px;
+}
+.side-nav-btn:hover{
+    background-color: rgb(253,253,253);
+    color: #9b38f1;
+}
+.side-nav-btn:active{
+    color: #7c32bf;
+}
+.side-nav-btn:nth-child(1){
+    border-top:none;
+}
+.header-btn-icn{
+    cursor:pointer;
+    border-radius:50%;
+    padding:3px;
+}
+.header-btn-icn:hover{
+    background-color: rgb(240,240,240);
+}
+.account-nav-bar{
+    position: absolute;
+    width:200px;
+    box-shadow: rgb(240,240,240) 0px 2px 2px 1px;
+    border: solid 1px lightgray;
+    background-color:rgb(252,252,252);
+    margin-top:4px;
+    left:calc(100% - 220px);
+    border-radius:5px;
+    height:300px;
+    padding-bottom:10px;
+    overflow: hidden;
+}
+.account-nav-bar > div > .account-nav-btn{
+    width:100%;
+    border: none;
+    border-bottom:solid 1px rgb(230,230,230);
+    background-color: transparent;
+    color:rgb(130,130,130);
+    font-weight:400;
+    padding:10px 0px;
+    font-size:15px;
+    letter-spacing:1px;
+}
+.account-nav-bar > div > .account-nav-btn:hover{
+    background-color: rgb(248,248,248);
+    color: #9b38f1;
+}
+.account-nav-bar > div > .account-nav-btn:active{
+    background-color: rgb(248,248,248);
+    color: #7c32bf;
+}
+.account-nav-bar > .account-sgn-out{
+    width:100px;
+    border:solid 1px rgb(230,230,230);
+    border-radius:5px;
+    padding:8px 5px;
+    font-size:15px;
+    letter-spacing:1px;
+    color:rgb(130,130,130);
+    background-color:transparent;
+}
+.account-nav-bar > .account-sgn-out:hover{
+    background-color: rgb(248,248,248);
+    border-color: #9b38f1;
+    color: #9b38f1;
+}
+.account-nav-bar > .account-sgn-out:active{
+    background-color: rgb(248,248,248);
+    border-color: #7c32bf;
+    color: #7c32bf;
+}
+.acnt-nav-comp-sec{
+    width:100%;
+    height:165px;
+    padding:10px 0px;
+    border-bottom:solid 1px rgb(230,230,230);
+}
+.nav-desc-title{
+    font-size:13px;
+    color: #7c32bf;
+    padding:10px;
+}
+.acnt-nav-comp-dsp{
+    height:145px;
+    overflow: scroll;
 }
