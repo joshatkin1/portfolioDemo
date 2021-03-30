@@ -15,17 +15,4 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    final public function testFunction(){
-
-        DB::table('sessions')->insert(
-            [
-                "user_id" => session('id'),
-                "payload" => json_encode(["name" => "joshua john atkin"]),
-                "last_activity" => time()
-            ]
-        );
-
-        $user = User::find( session('id'));
-        dd($user->session());
-    }
 }

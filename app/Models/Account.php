@@ -2,48 +2,93 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 
 class Account extends Model
 {
-    use HasFactory;
 
-    use HasFactory, Notifiable;
-
-    protected $table = 'user_accounts';
+    protected $table = 'companies';
     protected $primaryKey = 'id';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
-
+        'connection_tokens','app_subscriptions' , 'app_settings', 'subscription_cost', 'recruitment_details'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
+    public static function updateCompanyAccountSubs($sub){
+        $company_link = session('company_link');
+        $company_subs = self::getCompanySubs();
+        $new_company_subs = array();
 
-    ];
+        $key = array_search($sub, $company_subs);
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
+        if($key > -1){
+            foreach($company_subs as $s){
+                if($s !== $sub){
+                    array_push($new_company_subs, $s);
+                }
+            }
+        }else{
+            array_push($company_subs, $sub);
+            $new_company_subs = $company_subs;
+        }
 
-    ];
+        $company_subs = $new_company_subs;
+        $new_company_subs = json_encode($new_company_subs);
 
-    final public function user()
-    {
-        return $this->belongsTo('App\User', 'id', 'id', 'user');
+        DB::table('companies')
+            ->where('id', $company_link)
+            ->update(['app_subscriptions'  => $new_company_subs]);
+
+        return  $company_subs;
+    }
+
+    protected static function getCompanySubs(){
+
+        $company_link = session('company_link');
+
+        $result = DB::table('companies')
+            ->select('app_subscriptions')
+            ->where('id' , '=' , $company_link)
+            ->get();
+
+        $result = json_decode($result[0]->app_subscriptions);
+
+        return $result;
+    }
+
+    protected static function subscriptionCost(){
+        $company_link = session('company_link');
+
+        $result = DB::table('companies')
+            ->select('subscription_cost')
+            ->where('id' , '=' , $company_link)
+            ->get();
+
+        $result = json_decode($result[0]->subscription_cost);
+
+        return $result;
+    }
+
+    protected static function increaseSubscriptionCost(){
+        if(session('job_level') < 4){return false;}//MASTER ADMIN AUTH FAILED
+        $company_link = session('company_link');
+
+        DB::table('companies')
+            ->where('id' , $company_link)
+            ->increment('subscription_cost', 7);
+
+        return true;
+    }
+
+    protected static function decreaseSubscriptionCost(){
+        if(session('job_level') < 4){return false;}//MASTER ADMIN AUTH FAILED
+        $company_link = session('company_link');
+
+        DB::table('companies')
+            ->where('id' , $company_link)
+            ->decrement('subscription_cost', 7);
+
+        return true;
     }
 }

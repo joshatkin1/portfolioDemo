@@ -1,7 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Http\Request;
 
 //FALLBACK ROUTE
 Route::fallback(function () {return redirect('/home');});
@@ -24,15 +25,13 @@ Route::get('/verify-device', [App\Http\Controllers\DeviceVerificationController:
 Route::post('/verify-device/resend-code', [App\Http\Controllers\DeviceVerificationController::class, 'resendDeviceVerificationCode']);
 Route::post('/verify-device/submit', [App\Http\Controllers\DeviceVerificationController::class, 'submitDeviceVerificationCode']);
 
-//APP USER ROUTES
-Route::get('/app', [App\Http\Controllers\AppController::class, 'index'])->name('app');
-Route::get('/account', [App\Http\Controllers\AccountController::class, 'index'])->name('account');
+//APP USER SECTION ROUTES
+Route::get('/app', [App\Http\Controllers\AppController::class, 'appView'])->name('app');
+
+Route::get('/company/register', [App\Http\Controllers\CompanyRegisterController::class, 'companyRegisterView'])->name('companyRegister-view');
+Route::post('/company/register/submit', [App\Http\Controllers\CompanyRegisterController::class, 'registerCompany'])->name('companyRegister-register');
 
 
 //RESOURCES ROUTES
 Route::get('/resources/app/data/session/all', [App\Http\Controllers\UserController::class, 'fetchAllSessionData']);
-
-
-
-//RESOURCES ROUTES
-Route::get('/test', [App\Http\Controllers\Controller::class, 'testFunction']);
+Route::get('/resources/app/data/session/company-link-name', [App\Http\Controllers\UserController::class, 'fetchUserSessionCompanyLinkName']);

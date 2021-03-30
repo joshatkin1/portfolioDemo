@@ -74,7 +74,7 @@ class DeviceVerificationController extends Controller
         if ($validator->fails()) {
             return response()
                 ->view('device-verification', ['email' => session('email')], 422)
-                ->header('Content-Type', 'html');
+                ->header('Content-Type', 'text/plain');
         }
 
         $c = $request->input('verification-code');

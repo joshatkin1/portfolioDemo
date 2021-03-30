@@ -14,6 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+//MUST BE OUTSIDE API MIDDLEWARE GROUP
+Route::post('/login', [App\Http\Controllers\api\ApiAuthenticationController::class, 'login']);
+
+Route::group(['middleware' => 'auth:api'], function(){
+
+    Route::get('/user', function(Request $request){
+        return response( $request->user(), 200);
+    });
+
 });
+

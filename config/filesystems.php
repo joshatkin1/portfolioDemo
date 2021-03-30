@@ -8,7 +8,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | Here you may specify the default filesystem disk that should be used
-    | by the framework. The "local" disk, as well as a variety of cloud
+    | by the framework. The "local" disk, as well as a variety of app
     | based disks are available to your application. Just store away!
     |
     */
@@ -20,13 +20,13 @@ return [
     | Default Cloud Filesystem Disk
     |--------------------------------------------------------------------------
     |
-    | Many applications store files both locally and in the cloud. For this
-    | reason, you may specify a default "cloud" driver here. This driver
+    | Many applications store files both locally and in the app. For this
+    | reason, you may specify a default "app" driver here. This driver
     | will be bound as the Cloud disk implementation in the container.
     |
     */
 
-    'cloud' => env('FILESYSTEM_CLOUD', 's3'),
+    'app' => env('FILESYSTEM_CLOUD', 's3'),
 
     /*
     |--------------------------------------------------------------------------

@@ -2,21 +2,18 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use App\Models\UserSession;
-use App\Models\Account;
-use Illuminate\Support\Facades\DB;
+use App\Models\Company;
+use Laravel\Passport\HasApiTokens;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
-    use HasFactory, Notifiable;
-
+    use HasApiTokens, Notifiable;
     protected $table = 'users';
-    protected $primaryKey = 'id';
-    protected $deviceCookie;
+
+    protected $guarded = [];
 
     /**
      * The attributes that are mass assignable.
@@ -24,14 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'job_position',
-        'address',
-        'telephone',
-        'mobile',
-        'verified_device_keys',
+        'name','job_title','email','company_link', 'telephone' ,'logged_in','failed_logins','last_password_change','verified_device_keys', 'joined_date', 'password'
     ];
 
     /**
@@ -40,9 +30,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password',
-        'remember_token',
-        'verified_device_keys',
+        'password', 'remember_token','verified_device_keys','created_at','updated_at','joined_date','last_password_change','failed_logins','email_verified','last_password_change'
     ];
 
     /**
@@ -53,18 +41,30 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'verified_device_keys' => 'array',
-        'address' => 'array',
     ];
 
-    public function session()
+    /**
+     * Get the identifier that will be stored in the subject claim of the JWT.
+     *
+     * @return mixed
+     */
+    public function getJWTIdentifier()
     {
-        return $this->hasOne(UserSession::class,'user_id');
+        return $this->getKey();
     }
 
-    final public function account()
+    /**
+     * Return a key value array, containing any custom claims to be added to the JWT.
+     *
+     * @return array
+     */
+    public function getJWTCustomClaims()
     {
-        return $this->hasOne(Account::class);
+        return [];
     }
 
-
+    public function company()
+    {
+        return $this->hasOne('App\Models\Company', 'company_link', 'company_id');
+    }
 }
