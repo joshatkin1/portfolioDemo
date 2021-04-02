@@ -2,15 +2,11 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { v4 } from 'uuid';
-import AccountIcon from '../../../../../public/images/account.svg';
-import AccountIconActive from '../../../../../public/images/account-active.svg';
 import MessagingIcon from '../../../../../public/images/messaging.svg';
 import MessagingIconActive from '../../../../../public/images/messaging-active.svg';
-import {navigateAppPage} from '../../actions/appActions.js';
+import {navigateAppPage, toggleAppNavViewable, openAppNotif, closeAppNotif} from '../../actions/appActions.js';
 import NotificationsIcon from '../../../../../public/images/notifications.svg';
 import NotificationsIconActive from '../../../../../public/images/notifications-active.svg';
-import CloudIcon from '../../../../../public/images/cloud.svg';
-import CloudIconActive from '../../../../../public/images/cloud-active.svg';
 
 class AppNavBtn extends Component{
     constructor(props){
@@ -26,9 +22,9 @@ class AppNavBtn extends Component{
 
     shouldComponentUpdate(nextProps, nextState, nextContext) {
         var {buttonHovered} = this.state;
-        var {appPage} = this.props;
+        var {appNotif} = this.props;
 
-        if(appPage !== nextProps.appPage
+        if(appNotif !== nextProps.appNotif
             || buttonHovered !== nextState.buttonHovered){
             return true;
         }
@@ -37,8 +33,20 @@ class AppNavBtn extends Component{
     }
 
     onClick(){
-        var {buttonPage} = this.props;
-        this.props.navigateAppPage(buttonPage);
+        var {appNotif, notifName, appNavBarViewable} = this.props;
+
+        if(appNotif === notifName){
+            this.props.closeAppNotif(notifName);
+        }else{
+            if(appNotif !== notifName){
+                this.props.closeAppNotif(notifName);
+            }
+            this.props.openAppNotif(notifName);
+        }
+
+        if(appNavBarViewable){
+            this.props.toggleAppNavViewable();
+        }
     }
 
     onMouseEnter(){
@@ -52,28 +60,24 @@ class AppNavBtn extends Component{
     }
 
     displaySvg(){
-        var {buttonPage} = this.props;
+        var {notifName} = this.props;
         var svgIcon = "";
 
-        switch(buttonPage){
-            case 'account': svgIcon = AccountIcon ;break;
+        switch(notifName){
             case 'messaging': svgIcon = MessagingIcon ;break;
             case 'notifications': svgIcon = NotificationsIcon ;break;
-            case 'cloud': svgIcon = CloudIcon ;break;
         }
 
         return (<img src={svgIcon} height={"30px"}/>);
     }
 
     displayActiveSvg(){
-        var {buttonPage} = this.props;
+        var {notifName} = this.props;
         var svgIcon = "";
 
-        switch(buttonPage){
-            case 'account': svgIcon = AccountIconActive ;break;
+        switch(notifName){
             case 'messaging': svgIcon = MessagingIconActive ;break;
             case 'notifications': svgIcon = NotificationsIconActive ;break;
-            case 'cloud': svgIcon = CloudIconActive ;break;
         }
 
         return (<img src={svgIcon} height={"30px"}/>);
@@ -81,24 +85,24 @@ class AppNavBtn extends Component{
 
     render(){
         var {buttonHovered} = this.state;
-        var {buttonPage, appPage} = this.props;
+        var {notifName, appNotif} = this.props;
 
         return (
             <div className={"algn-top wrap-middle"}>
-                <div className={appPage === buttonPage ? "actv-nav-bar-btns":"nav-bar-btns"}
+                <div className={appNotif === notifName ? "actv-nav-bar-btns":"nav-bar-btns"}
                         onClick={() => {this.onClick()}}
                         onMouseEnter={() => {this.onMouseEnter()}}
                         onMouseLeave={() => {this.onMouseLeave()}}
                 >
-                    {appPage === buttonPage ?
+                    {appNotif === notifName ?
                         this.displayActiveSvg()
                         :
                         this.displaySvg()
                     }
-                    <p className={"nav-btn-p"} style={appPage === buttonPage ? {color:"#1770E2"}:{}}>{buttonPage}</p>
+                    <p className={"nav-btn-p"} style={appNotif === notifName ? {color:"#1770E2"}:{}}>{notifName}</p>
                 </div>
                 { buttonHovered === true ?
-                    <p className={"nav-bar-btn-lbl"}>{buttonPage}</p>
+                    <p className={"nav-bar-btn-lbl"}>{notifName}</p>
                     :
                     <></>
                 }
@@ -109,11 +113,16 @@ class AppNavBtn extends Component{
 
 AppNavBtn.propTypes = {
     navigateAppPage: PropTypes.func.isRequired,
-    appPage: PropTypes.string.isRequired,
+    toggleAppNavViewable: PropTypes.func.isRequired,
+    openAppNotif: PropTypes.func.isRequired,
+    closeAppNotif: PropTypes.func.isRequired,
+    appNavBarViewable: PropTypes.bool.isRequired,
+    appNotif: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => ({
-    appPage: state.app.appPage,
+    appNavBarViewable: state.app.appNavBarViewable,
+    appNotif: state.app.appNotif,
 });
 
-export default connect(mapStateToProps , {navigateAppPage})(AppNavBtn);
+export default connect(mapStateToProps , {navigateAppPage, toggleAppNavViewable, openAppNotif, closeAppNotif})(AppNavBtn);

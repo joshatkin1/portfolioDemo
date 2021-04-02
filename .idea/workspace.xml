@@ -125,132 +125,74 @@
       <change afterPath="$PROJECT_DIR$/../masterplan/resources/js/store.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../masterplan/resources/views/home.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../softsync/resources/js/actions/appActions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.rnd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/CompanyController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/CompanyRegisterController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/FileStorageController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ImportController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/JobAdvertController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/TransactionController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/CompanyRegisterRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/App.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/CloudEmployee.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/CloudSetting.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Company.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Customer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Employee.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/FileStorage.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/JobAdvert.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Transaction.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/debugbar.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/sanctum.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_12_14_000001_create_personal_access_tokens_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_02_23_171000_create_companies_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_02_23_171230_create_apps_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_02_23_172709_create_file_storages_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_02_23_173414_create_job_adverts_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/account-active.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/account.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/app.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/cloud-active.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/cloud.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/cog.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/jobs-active.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/jobs.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/messaging-active.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/messaging.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/notifications-active.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/notifications.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/profile-active.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/profile.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/cloud.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/companyRegister.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/app/AppStore.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/app/actions/accountActions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/app/actions/actionTypes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/app/actions/clientActions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/app/components/AccountContentSectionNavigation.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/app/components/AccountPageNavigation.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/app/components/AppNavButtons.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/app/items/buttons/AccountNavBtn.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/app/items/buttons/AppNavBtn.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/app/items/buttons/SideNavButton.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/app/pages/AccountPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/app/pages/CloudPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/app/pages/MessagesPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/app/pages/NotificationsPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/app/reducers/accountReducers.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/app/reducers/clientReducers.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/companyRegister.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/companyRegister/CompanyRegisterComponent.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/companyRegister/companyRegisterRoutes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/companyRegister/companyRegisterStore.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/companyRegister/component/HeaderComponent.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/companyRegister/reducers/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/company-register.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/debugbar/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/MasterAuthentication.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/home-active.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/home.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/personal.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/svgsprite.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/login.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/app/components/header/AccountNavBtn.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/app/components/header/AppNavBtn.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/app/components/header/HeaderComponent.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/profile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/profile/ProfileController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/profile/ProfileStore.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/profile/actions/actionTypes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/profile/actions/profileActions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/profile/actions/userActions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/profile/components/header/AppNavButtons.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/profile/profileRoutes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/profile/reducers/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/profile/reducers/profileReducers.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/profile/reducers/userReducers.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/profile.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/masterplan.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/masterplan.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AccountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AccountController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Exceptions/Handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Exceptions/Handler.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AppController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AppController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DeviceVerificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DeviceVerificationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/api/ApiAuthenticationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/api/ApiAuthenticationController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Account.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Account.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/LimitUserToOneDevice.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/LimitUserToOneDevice.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/UserSession.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/cors.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/cors.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/filesystems.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/filesystems.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/mail.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/mail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/session.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/session.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/jwt.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/jwt.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/sanctum.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/public/.htaccess" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/global.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/api/ApiAuthenticationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/user-circle-solid.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/user-circle-solid.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/account-active.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/account-active.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/account.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/account.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/messaging.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/messaging.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/notifications.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/notifications.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/profile-active.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/personal-active.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/profile.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/profile.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/companyRegister.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/companyRegister.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/actions/actionTypes.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/actions/appActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app/actions/appActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/actions/userActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app/actions/userActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/AccountButton.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/HeaderComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app/components/HeaderComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/NavComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app/components/NavComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/SideNav.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app/components/SideNav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/controllers/AppController.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app/AppController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/functions/userFunctions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app/functions/userFunctions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/items/buttons/SideNavButton.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/reducers/appReducers.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app/reducers/appReducers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app/reducers/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/reducers/userReducers.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app/reducers/userReducers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app/appRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/store.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app/AppController.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app/AppController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app/actions/actionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app/actions/actionTypes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app/actions/appActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app/actions/appActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app/components/AccountPageNavigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app/components/AccountPageNavigation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app/components/AppNavButtons.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app/components/header/AppNavButtons.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app/components/HeaderComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/profile/components/header/HeaderComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app/items/buttons/AccountNavBtn.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/profile/components/header/AccountNavBtn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app/items/buttons/AppNavBtn.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/profile/components/header/AppNavBtn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app/reducers/appReducers.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app/reducers/appReducers.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/confirm.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/confirm.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/device-verification.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/device-verification.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/main.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/main.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
@@ -363,7 +305,6 @@
       <path value="$PROJECT_DIR$/vendor/sebastian/lines-of-code" />
       <path value="$PROJECT_DIR$/vendor/sebastian/type" />
       <path value="$PROJECT_DIR$/vendor/sebastian/resource-operations" />
-      <path value="$PROJECT_DIR$/vendor/fzaninotto/faker" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
       <path value="$PROJECT_DIR$/vendor/sebastian/global-state" />
       <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
@@ -391,8 +332,6 @@
       <path value="$PROJECT_DIR$/vendor/tymon/jwt-auth" />
       <path value="$PROJECT_DIR$/vendor/namshi/jose" />
       <path value="$PROJECT_DIR$/vendor/lcobucci/jwt" />
-      <path value="$PROJECT_DIR$/vendor/laravel/sanctum" />
-      <path value="$PROJECT_DIR$/vendor/laravel/airlock" />
       <path value="$PROJECT_DIR$/vendor/firebase/php-jwt" />
       <path value="$PROJECT_DIR$/vendor/psr/http-factory" />
       <path value="$PROJECT_DIR$/vendor/defuse/php-encryption" />
@@ -402,9 +341,14 @@
       <path value="$PROJECT_DIR$/vendor/phpseclib/phpseclib" />
       <path value="$PROJECT_DIR$/vendor/nyholm/psr7" />
       <path value="$PROJECT_DIR$/vendor/symfony/psr-http-message-bridge" />
-      <path value="$PROJECT_DIR$/vendor/paragonie/constant_time_encoding" />
       <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
       <path value="$PROJECT_DIR$/vendor/php-http/message-factory" />
+      <path value="$PROJECT_DIR$/vendor/aws/aws-sdk-php" />
+      <path value="$PROJECT_DIR$/vendor/mtdowling/jmespath.php" />
+      <path value="$PROJECT_DIR$/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/vendor/league/flysystem-aws-s3-v3" />
+      <path value="$PROJECT_DIR$/vendor/league/flysystem-sftp" />
+      <path value="$PROJECT_DIR$/vendor/league/flysystem-cached-adapter" />
     </include_path>
   </component>
   <component name="ProjectId" id="1ijRMTOnWcMCV9ugmBUff7Nq8no" />
@@ -420,18 +364,21 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/js/profile/components/header" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/js/profile/components/header" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources/js/app" />
+      <recent name="$PROJECT_DIR$/resources/js/app/components/header" />
+      <recent name="$PROJECT_DIR$/resources/js/global/components" />
+      <recent name="$PROJECT_DIR$/resources/js/global" />
       <recent name="$PROJECT_DIR$/resources/js" />
-      <recent name="$PROJECT_DIR$/resources/js/account" />
-      <recent name="$PROJECT_DIR$/resources/js/items/buttons" />
-      <recent name="$PROJECT_DIR$/resources/js/controllers" />
     </key>
   </component>
   <component name="RunManager">
@@ -480,7 +427,8 @@
       <workItem from="1617034098693" duration="11165000" />
       <workItem from="1617047200033" duration="2380000" />
       <workItem from="1617052507344" duration="7190000" />
-      <workItem from="1617134952599" duration="4234000" />
+      <workItem from="1617134952599" duration="59286000" />
+      <workItem from="1617373227633" duration="2648000" />
     </task>
     <servers />
   </component>
@@ -503,6 +451,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="92" y="72" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1617309892839">
+      <screen x="0" y="25" width="1440" height="776" />
+    </state>
+    <state x="92" y="72" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1440.776@0.25.1440.776" timestamp="1617309892839" />
     <state x="473" y="184" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1615398216639">
       <screen x="0" y="25" width="1440" height="780" />
     </state>
@@ -511,10 +463,16 @@
       <screen x="0" y="25" width="1440" height="780" />
     </state>
     <state x="458" y="166" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.25.1440.780@0.25.1440.780" timestamp="1615331515655" />
-    <state x="430" y="174" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1615951513669">
-      <screen x="0" y="25" width="1440" height="780" />
+    <state x="430" y="173" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1617322806496">
+      <screen x="0" y="25" width="1440" height="776" />
     </state>
+    <state x="430" y="173" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.25.1440.776@0.25.1440.776" timestamp="1617322806496" />
     <state x="430" y="174" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.25.1440.780@0.25.1440.780" timestamp="1615951513669" />
+    <state x="430" y="175" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.25.1440.785@0.25.1440.785" timestamp="1617150925709" />
+    <state x="285" y="60" key="#phpunit.xml" timestamp="1617158963816">
+      <screen x="0" y="25" width="1440" height="781" />
+    </state>
+    <state x="285" y="60" key="#phpunit.xml/0.25.1440.781@0.25.1440.781" timestamp="1617158963816" />
     <state x="373" y="145" key="NewPhpClassDialog" timestamp="1614101806267">
       <screen x="0" y="25" width="1440" height="780" />
     </state>

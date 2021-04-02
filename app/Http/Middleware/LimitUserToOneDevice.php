@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Redis;
 
 class LimitUserToOneDevice
@@ -30,8 +31,7 @@ class LimitUserToOneDevice
 
             Redis::del(session('id') . ':deviceVerificationKey');
             Redis::del(session('id') . ':multiDeviceClash');
-            session()->flush();
-            return redirect('/login?multi-user-clash=true');
+            return redirect('/api/logout');
         }
 
         $redis->setex(session('id') . ':multiDeviceClash', 400, true);

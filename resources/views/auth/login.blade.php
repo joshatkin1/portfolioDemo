@@ -1,16 +1,14 @@
 @extends('layouts.main')
-
 @section('content')
-    <?php $email = Cookie::get('email'); ?>
-    <div class="container">
+    <div class="container" style="height:100vh;justify-content: center;">
         <div id="loginpagecnt">
-            <a href="{{ route('password.request') }}"><h1 id="lgnpghdr">workcloud</h1></a>
+            <a href="/"><h1 id="lgnpghdr">workcloud</h1></a>
             <p id="sgninp">Sign in to workcloud</p>
-            <form id="sgninform" method="POST" action="{{ route('login') }}" enctype="application/x-www-form-urlencoded" class="loginform">
+            <form id="sgninform" method="POST" action="/api/login" enctype="application/x-www-form-urlencoded" class="loginform">
                 @csrf
                 <div class="lgnfrminptsec">
                     <p class="lrg-inpt-lbl">Email address</p>
-                    <input id="email" class="lrg-inpt" name="email" type="email" autocomplete="off" value="<?php echo $email = (isset($email)? $email : '');?>" placeholder="email"/>
+                    <input id="email" class="lrg-inpt" name="email" type="email" autocomplete="off" value="<?php echo (isset($_COOKIE['email']))?$_COOKIE["email"]:'';?>" placeholder="email"/>
                     @error('email')
                     <span class="invalid-login-feedback" role="alert">
                     {{ $message }}
@@ -19,8 +17,8 @@
                 </div>
                 <div class="lgnfrminptsec">
                     <div id="passlblsec">
-                        <p>Password</p>
-                        <a href="/password/reset">forgot password?</a>
+                        <p tabindex="-1">Password</p>
+                        <a href="/password/reset" tabindex="-1" style="font-size:11px;">forgot password?</a>
                     </div>
                     <input id="password" class="lrg-inpt" name="password" type="password" autocomplete="off" placeholder="******"/>
                     @error('password')
@@ -50,6 +48,7 @@
             display:flex;
             flex-direction: column;
             align-items: center;
+            margin-top:-12vh;
         }
         #lgnpghdr{
             margin-top:35px;
@@ -60,9 +59,9 @@
             text-decoration:none;
         }
         #sgninp{
-            margin-top:30px;
+            margin-top:15px;
             font-size:22px;
-            font-family:"Lato", sans-serif;
+            font-family:"Helvetica Neue", "Lato", sans-serif;
             font-weight: 400;
             color:rgb(90,90,90);
             letter-spacing:0.5px;
@@ -133,6 +132,7 @@
             display:flex;
             flex-direction: row;
             justify-content:space-evenly;
+            align-items: baseline;
         }
         #passlblsec > p , #passlblsec > a{
             width:50%;
@@ -169,11 +169,4 @@
             padding:15px 20px;
         }
     </style>
-    <script type="application/javascript" charset="UTF-8">
-        var sgninform = document.getElementById('sgninform');
-        var sgninbtn = document.getElementById('sgninbtn');
-        sgninform.addEventListener("submit", function(){
-            sgninbtn.disabled = true;
-        });
-    </script>
 @endsection

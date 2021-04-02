@@ -11,10 +11,10 @@ body{
     font-family: sans-serif;
     font-size: 1rem;
     font-weight: 400;
-    line-height: 1;
+    line-height: 1.2;
     color: rgb(70,70,70);
     text-align: left;
-    letter-spacing:1.5px;
+    letter-spacing:0.5px;
     background-color: rgb(252,252,253);
 }
 div{
@@ -26,7 +26,7 @@ h3{font-size:60px;letter-spacing:3px;}
 h4{font-size:45px;letter-spacing:2px;}
 h4{font-size:45px;letter-spacing:2px;}
 h5{font-size:25px;letter-spacing:2px;}
-p{letter-spacing:1px;}
+p{letter-spacing:0.5px;font-size:17px;}
 a {
     color: inherit;
     text-decoration: none;
@@ -128,7 +128,7 @@ textarea {
 
 /*POSITIONAL*/
 .content-wrap, .body-content-wrap, .container, .container-fluid, .wrap-start, .wrap-end,.wrap-middle, .wrap-space-between , .content-stretch,
-.algn-btm,.algn-cntr, .content-fill, .content-section, .inr-content-section, .container-xl, .container-row{
+.algn-btm,.algn-cntr, .algn-left,  .content-fill, .content-section, .inr-content-section, .container-xl, .container-row{
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -192,6 +192,9 @@ textarea {
 .algn-base{
     align-items: baseline;
 }
+.algn-left{
+    justify-content: flex-start;
+}
 .content-fill{
     justify-content:space-between;
 }
@@ -207,18 +210,21 @@ textarea {
     margin-left: auto;
 }
 .profile-page-content{
-    width:99%;
-    max-width:1100px;
+    width:96%;
+    max-width:1200px;
+    padding-left:2%;
+    padding-right: 2%;
     display:flex;
     flex-direction: column;
     justify-content: stretch;
+    align-items: center;
 }
 .profile-page-content > .profile-body-section{
     width:96%;
     padding:2%;
     background-color:white;
     border:solid 1.5px rgb(240,240,240);
-    border-radius:20px;
+    border-radius:10px;
     margin-top:10px;
     display:flex;
     flex-direction: row;
@@ -336,15 +342,24 @@ textarea {
     background: -webkit-linear-gradient(270deg, rgb(250,250,250), white, rgb(240,240,240));
     border-bottom: solid 0.5px rgb(220,220,220);
 }
+.outr-header-bar{
+    position: fixed;
+    height:50px;
+    background-color:white;
+    border-bottom: solid 0.5px rgb(245,245,245);
+    width:100%;
+    top:0;
+    z-index:1000;
+}
 .header-bar{
     position: fixed;
     height:50px;
     background-color:white;
     border-bottom: solid 0.5px rgb(245,245,245);
     width:96%;
+    max-width:1200px;
     padding-left:2%;
     padding-right: 2%;
-    max-width:1700px;
     top:0;
     z-index:1000;
 }
@@ -411,10 +426,28 @@ textarea {
 .side-nav-btn:nth-child(1){
     border-top:none;
 }
-.header-btn-icn{
+.app-btn-icn{
     cursor:pointer;
     border-radius:50%;
     padding:3px;
+}
+.app-btn-icn:hover{
+    background-color: rgb(240,240,240);
+}
+.header-btn-icn{
+    overflow: hidden;
+    display:flex;
+    flex-direction:row;
+    justify-content: flex-start;
+    align-items: center;
+    cursor:pointer;
+    border-radius:30px;
+    padding:2px 7px;
+    border:solid 1px #1770E2;
+    width:90px;
+}
+.header-btn-icn > p{
+    color: #0087FF;
 }
 .header-btn-icn:hover{
     background-color: rgb(240,240,240);
@@ -1295,8 +1328,8 @@ td.tdstatus{width:110px;}
 p
 {
     color:rgb(100,100,100);
-    font-family:'Lato' , 'Maven Pro',sans-serif;
-    font-size:14px;
+    font-family:'Lato',sans-serif;
+    font-size:16px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -3483,9 +3516,6 @@ hr
     align-items: center;
     cursor:pointer;
 }
-.actv-nav-bar-btns{
-    border-bottom:solid 3px #1770E2;
-}
 .acnt-nav-bar-btn{
     border-bottom: none;
     width:60px;
@@ -3531,11 +3561,11 @@ hr
 }
 .prf-dtl-p{
     font-size:22px;
-    letter-spacing:2px;
+    letter-spacing:1px;
     font-family: "Lato", sans-serif;
-    font-weight: bold;
+    font-weight: 500;
     margin-bottom:7px;
-    color:rgb(70,70,70);
+    color:rgb(80,80,80);
 }
 .prf-dtl-p:nth-child(1){
     font-weight: 500;
@@ -3675,4 +3705,20 @@ hr
     display:flex;
     justify-content: stretch;
     flex-direction: column;
+}
+.acnt-nav-p-dv{
+    margin-left:5px;
+    color: #1770E2;
+}
+.acnt-nav-p-dv > p:first-child{
+    color: #1770E2;
+}
+.swtch-acnt-p{
+    position: absolute;
+    font-size:7.5px;
+    font-family: "Helvetica Neue", sans-serif;
+    margin-top:17px;
+    letter-spacing:0px;
+    flex-wrap: nowrap;
+    color:#929292;
 }

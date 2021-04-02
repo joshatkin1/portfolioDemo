@@ -6,7 +6,7 @@ import {navigateAppPage} from './actions/appActions.js';
 import {fetchSessionData} from './actions/userActions.js';
 
 //MAJOR CONTROLLER COMPONENTS
-import HeaderComponent from './components/HeaderComponent.js';
+import HeaderComponent from './components/header/HeaderComponent.js';
 import SideNav from "./components/SideNav";
 import AccountPage from "./pages/AccountPage";
 import NotificationsPage from "./pages/NotificationsPage";
@@ -42,25 +42,22 @@ class AppController extends Component{
         var {appPage} = this.props;
 
         switch(appPage){
-            case 'account' : return (<AccountPage key={v4()} />) ;break;
             case 'notifications' : return (<NotificationsPage key={v4()} />) ;break;
             case 'messaging' : return (<MessagesPage key={v4()} />) ;break;
-            case 'cloud' : return (<CloudPage key={v4()} />) ;break;
+            case 'home' : return (<CloudPage key={v4()} />) ;break;
         }
     }
 
     render(){
         return (
                 <div className={"content-wrap algn-cntr"}>
-                    <div className={"header-bar content-wrap algn-cntr"}>
-                            <HeaderComponent key={v4()}/>
+                    <div className={"outr-header-bar content-wrap algn-cntr"}>
+                        <HeaderComponent key={v4()}/>
                     </div>
-                    <div className={"body-content-wrap algn-cntr"}>
-                        <div className={"content-wrap"} style={{justifyContent:"stretch"}}>
-                            <div className={"container"}>
+                    <div className={"inr-content body-content-wrap algn-cntr"}>
+                            <div className={"content-wrap"} style={{justifyContent:"stretch"}}>
                                 {this.displayAppPage()}
                             </div>
-                        </div>
                     </div>
                 </div>
         );

@@ -17,30 +17,17 @@ use Illuminate\Http\Response;
 class DeviceVerificationController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable|\Illuminate\Http\RedirectResponse
      */
     final public function index(Request $request)
     {
-        if(session('device_auth')){
-            if(session('device_auth') === true){
-                return redirect(RouteServiceProvider::APP);
-            }
+        if(Session::get('device_auth') === true){
+            return redirect(RouteServiceProvider::APP);
         }
 
-        $email = Session::get('email');
-        return view('device-verification', ['email' => $email]);
+        return view('device-verification');
     }
 
     /**
@@ -53,10 +40,10 @@ class DeviceVerificationController extends Controller
         if($accountVerification->limitVerificationCodes()){
             $code = $accountVerification->formatVerificationCode();
             Mail::to($email)->send(new VerificationCodeEmail($code));
-            return view('device-verification', ['email' => $email]);
+            return view('device-verification');
         }
 
-        return view('device-verification', ['email' => $email, 'error' => '']);
+        return view('device-verification');
     }
 
     /**
@@ -72,9 +59,7 @@ class DeviceVerificationController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()
-                ->view('device-verification', ['email' => session('email')], 422)
-                ->header('Content-Type', 'text/plain');
+            return back();
         }
 
         $c = $request->input('verification-code');
@@ -86,12 +71,12 @@ class DeviceVerificationController extends Controller
 
             if($code->code === $c){
 
-                session(['device_auth' => true]);
+                Session::put(['device_auth' => true]);
 
                 $deviceCookie = $accountDeviceVerification->addThisDeviceToVerifiedList();
 
                 $redis = Redis::connection();
-                $redis->set(session('id') . ':deviceVerificationKey', $deviceCookie);
+                $redis->set(Session::get('id') . ':deviceVerificationKey', $deviceCookie);
 
                 return Redirect::route('app')->withCookie('deviceVerificationKey', $deviceCookie, 999999999);
             }

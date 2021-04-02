@@ -2,11 +2,11 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { v4 } from 'uuid';
-import ProfileIcon from '../../../../../public/images/profile.svg';
-import ProfileIconActive from '../../../../../public/images/profile-active.svg';
+import ProfileIcon from '../../../../../public/images/personal.svg';
+import ProfileIconActive from '../../../../../public/images/personal-active.svg';
 import JobsIcon from '../../../../../public/images/jobs.svg';
 import JobsIconActive from '../../../../../public/images/jobs-active.svg';
-import {navigateAccountPage} from  '../../actions/accountActions.js';
+import {navigateAccountPage} from '../../actions/accountActions.js';
 
 class AccountNavBtn extends Component{
     constructor(props){

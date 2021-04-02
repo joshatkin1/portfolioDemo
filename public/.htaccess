@@ -18,4 +18,11 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+
+#    <FilesMatch "\.(css|js|gif|png|jpg|jpeg|svg)$">
+#      ExpiresDefault "access plus 1 week"
+#      Header append Cache-Control "public"
+#      ExpiresActive On
+#    </FilesMatch>
+
 </IfModule>

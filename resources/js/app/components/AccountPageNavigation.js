@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { v4 } from 'uuid';
-import AccountNavBtn from "../items/buttons/AccountNavBtn.js";
+import AccountNavBtn from "./header/AccountNavBtn.js";
 
 class AccountPageNavigation extends Component{
     constructor(props){

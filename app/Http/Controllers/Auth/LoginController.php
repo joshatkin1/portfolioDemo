@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Redis;
 
 class LoginController extends Controller
@@ -37,7 +38,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('guest')->except('login', 'logout');
     }
 
     /**
@@ -52,20 +53,19 @@ class LoginController extends Controller
 
         $request->session()->flush();
 
-        Cookie::queue('email', $request->input('email'), 12321311);
-
         $request["password"] = $request["password"] . 'H4uhsh7!2Gv3d';
 
-        if (Auth::attempt($this->credentials($request))){
+        //CHECK IF DETAILS ARE CORRECT AND CREATE JWT TOKEN
+        if (! Auth::attempt($this->credentials($request))){
+            return back()->withErrors(["password" => "password is incorrect"]);
+        }
 
             $user = Auth::user();
 
             $this->user = $user;
-
             $this->MFArequired = true;
 
             $device_verf_cookie =  $request->cookie('deviceVerificationKey');
-
 
             //GET USER DEVICE ID HASH CHECK IF DEVICE IS VERIFIED AND REDIRECT TO MFA IF (IP + HTTP_USER_AGENT hashed)
             if($device_verf_cookie && $device_verf_cookie !== "" && $device_verf_cookie !== null){
@@ -90,10 +90,7 @@ class LoginController extends Controller
 
             }
 
-            return true;
-        }
-
-        return back()->withInput();
+            return $user;
     }
 
     /**
@@ -105,7 +102,6 @@ class LoginController extends Controller
      */
     final protected function sendLoginResponse($request)
     {
-
         if(! Auth::user()){
             return back()->withInput();
         }
@@ -163,7 +159,6 @@ class LoginController extends Controller
             Redis::del(session('id') . ':multiDeviceClash');
         }catch(\Exception $e){}
         // redirect to homepage
-        $cookie = Cookie::forget('jwt');
-        return redirect('/')->withCookie($cookie);
+        return redirect('/login');
     }
 }

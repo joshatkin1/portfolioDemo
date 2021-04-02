@@ -12,5 +12,6 @@ const mix = require('laravel-mix');
  */
 
 mix.react('resources/js/app.js', 'public/js')
+    .js('resources/js/profile.js', 'public/js')
     .js('resources/js/companyRegister.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
