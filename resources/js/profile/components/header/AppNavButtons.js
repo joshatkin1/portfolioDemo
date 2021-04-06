@@ -63,16 +63,14 @@ class AppNavButtons extends Component{
                     <>
                         {
                             appNavBarViewable === true ?
-                                <div className={"account-nav-bar algn-cntr"}
-                                     style={{justifyContent:"space-between"}}
-                                >
-                                    <div className={"container"}>
-                                        <button className={"account-nav-btn"}
+                                <div className={"app-nav-bar"}>
+                                        <div className={"app-nav-btn"}
                                                 onClick={()=>{this.buttonOnClick()}}
-                                        >Manage Account</button>
-                                        <button className={"account-nav-btn"}>Settings</button>
+                                        >Account</div>
+                                        <div className={"app-nav-btn"}>Settings</div>
+                                    <div className={"wrap-end"} style={{marginTop:"10px"}}>
+                                        <div className={"app-nav-btn"} onClick={()=>{window.location.href='/logout'}}>Sign Out</div>
                                     </div>
-                                    <button className={"account-sgn-out"} onClick={()=>{window.location.href='/logout'}}>Sign Out</button>
                                 </div>
                                 :
                                 <></>

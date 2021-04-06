@@ -23,12 +23,15 @@ class HeaderComponent extends Component{
         var {workCloudPage} = this.props;
         return (
             <header className={"header-bar container-row wrap-middle algn-cntr"}>
-                <div className={"col-3 wrap-start algn-cntr"}>
-                    <a href={'/app'}>
+                <div className={"col-6 wrap-start algn-cntr"}
+                     style={{height:"50px"}}
+                     onDoubleClick={()=>{window.location.href = "/profile";}}
+                >
+                    <a href={'/profile'}>
                         <h4 className="webtitle">workcloud</h4>
                     </a>
                 </div>
-                <div className={"col-9 wrap-end algn-cntr"}>
+                <div className={"col-6 wrap-end algn-cntr"}>
                     <AppNavButtons key={v4()}/>
                 </div>
             </header>

@@ -73,12 +73,11 @@ class DeviceVerificationController extends Controller
 
                 Session::put(['device_auth' => true]);
 
-                $deviceCookie = $accountDeviceVerification->addThisDeviceToVerifiedList();
-
+                $cookieKey = $accountDeviceVerification->addThisDeviceToVerifiedList();
                 $redis = Redis::connection();
-                $redis->set(Session::get('id') . ':deviceVerificationKey', $deviceCookie);
-
-                return Redirect::route('app')->withCookie('deviceVerificationKey', $deviceCookie, 999999999);
+                $redis->set(Session::get('id') . ':deviceAgent', $request->header('user-agent'));
+                $deviceCookie = cookie("deviceVerificationKey", $cookieKey, 27200, '/','',true,true);
+                return Redirect::route('profile')->withCookie($deviceCookie);
             }
         }
 

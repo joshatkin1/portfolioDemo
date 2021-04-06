@@ -54933,7 +54933,10 @@ var ProfileController = /*#__PURE__*/function (_Component) {
     _classCallCheck(this, ProfileController);
 
     _this = _super.call(this, props);
-    _this.state = {};
+    _this.state = {
+      firstTimeLoad: 1,
+      pageLoaded: true
+    };
     return _this;
   }
 
@@ -54941,18 +54944,57 @@ var ProfileController = /*#__PURE__*/function (_Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       console.log('ProfileController componentDidMount');
-      this.props.fetchSessionData();
+      this.startMockPageLoading();
+      this.loadControllerData();
     }
   }, {
     key: "shouldComponentUpdate",
     value: function shouldComponentUpdate(nextProps, nextState, nextContext) {
+      var pageLoaded = this.state.pageLoaded;
       var profilePage = this.props.profilePage;
 
-      if (profilePage !== nextProps.profilePage) {
+      if (pageLoaded !== nextState.pageLoaded || profilePage !== nextProps.profilePage) {
         return true;
       }
 
       return false;
+    }
+  }, {
+    key: "startMockPageLoading",
+    value: function startMockPageLoading() {
+      var _this2 = this;
+
+      var _this$state = this.state,
+          pageLoaded = _this$state.pageLoaded,
+          firstTimeLoad = _this$state.firstTimeLoad;
+      var timeoutVal = 2000;
+
+      switch (firstTimeLoad) {
+        case 1:
+          timeoutVal = 3000;
+          break;
+
+        case 0:
+          timeoutVal = 1500;
+          break;
+      }
+
+      var pageLoading = setTimeout(function () {
+        _this2.setState({
+          pageLoaded: true
+        });
+      }, timeoutVal);
+      return function () {
+        return clearTimeout(pageLoading);
+      };
+      this.setState({
+        firstTimeLoad: 0
+      });
+    }
+  }, {
+    key: "loadControllerData",
+    value: function loadControllerData() {
+      this.props.fetchSessionData();
     }
   }, {
     key: "displayAppPage",
@@ -54964,7 +55006,8 @@ var ProfileController = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      var pageLoaded = this.state.pageLoaded;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, pageLoaded ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "content-wrap algn-cntr"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "outr-header-bar content-wrap algn-cntr"
@@ -54977,7 +55020,15 @@ var ProfileController = /*#__PURE__*/function (_Component) {
         style: {
           justifyContent: "stretch"
         }
-      })));
+      }))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "content-wrap algn-cntr loading-page-dv"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        className: "webtitle"
+      }, "workcloud"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "page-loading-bar"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "page-loading-bar-inr"
+      }))));
     }
   }]);
 
@@ -55114,7 +55165,7 @@ var fetchSessionData = function fetchSessionData() {
   return function (dispatch) {
     axios({
       method: 'GET',
-      url: '/resources/app/data/session/all',
+      url: 'api/resources/data/session/all',
       validateStatus: function validateStatus() {
         return true;
       }
@@ -55690,25 +55741,25 @@ var AppNavButtons = /*#__PURE__*/function (_Component) {
         alt: "account navigation",
         height: "35px"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, appNavBarViewable === true ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "account-nav-bar algn-cntr",
-        style: {
-          justifyContent: "space-between"
-        }
+        className: "app-nav-bar"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "account-nav-btn",
+        className: "app-nav-btn",
         onClick: function onClick() {
           _this2.buttonOnClick();
         }
-      }, "Manage Account"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "account-nav-btn"
-      }, "Settings")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "account-sgn-out",
+      }, "Account"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "app-nav-btn"
+      }, "Settings"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "wrap-end",
+        style: {
+          marginTop: "10px"
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "app-nav-btn",
         onClick: function onClick() {
           window.location.href = '/logout';
         }
-      }, "Sign Out")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Sign Out"))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "header-btn-icn",
         onClick: function onClick() {
           window.location.href = '/app';
@@ -55934,13 +55985,19 @@ var HeaderComponent = /*#__PURE__*/function (_Component) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
         className: "header-bar container-row wrap-middle algn-cntr"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-3 wrap-start algn-cntr"
+        className: "col-6 wrap-start algn-cntr",
+        style: {
+          height: "50px"
+        },
+        onDoubleClick: function onDoubleClick() {
+          window.location.href = "/profile";
+        }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: '/app'
+        href: '/profile'
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
         className: "webtitle"
       }, "workcloud"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-9 wrap-end algn-cntr"
+        className: "col-6 wrap-end algn-cntr"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AppNavButtons_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
         key: Object(uuid__WEBPACK_IMPORTED_MODULE_3__["v4"])()
       })));

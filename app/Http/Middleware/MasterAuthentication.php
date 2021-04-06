@@ -4,10 +4,11 @@ namespace App\Http\Middleware;
 
 use App\Providers\RouteServiceProvider;
 use Closure;
+use Illuminate\Auth\Middleware\Authenticate as Middleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-class MasterAuthentication
+class MasterAuthentication extends Middleware
 {
     /**
      * Handle an incoming request.
@@ -18,7 +19,6 @@ class MasterAuthentication
      */
     public function handle(Request $request, Closure $next)
     {
-
         if(!Session::has('loggedIn')){
             return redirect(RouteServiceProvider::HOME);
         }

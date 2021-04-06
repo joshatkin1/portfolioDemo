@@ -9,11 +9,11 @@ class ProfileController extends Controller
     public function __construct()
     {
         $this->middleware('masterAuth')->only('profileView');
+        $this->middleware('auth:api')->except('profileView');
 
-        //VERIFY USER DEVICE IS EXPECTED CURRENT DEVICE
-        $num = random_int(1,14);
-        if($num === 6){
-            $this->middleware('multiUserCheck');
+        $randNum = random_int(1,10);
+        if($randNum === 6){
+            $this->middleware('userAgentCheck');
         }
     }
 

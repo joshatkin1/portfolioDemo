@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie as cc;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 

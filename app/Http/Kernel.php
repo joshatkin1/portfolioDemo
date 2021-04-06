@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\Authenticate;
+use App\Http\Middleware\UserAgentMultiDeviceCheck;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -56,6 +57,7 @@ class Kernel extends HttpKernel
     protected $routeMiddleware = [
         'masterAuth' => \App\Http\Middleware\MasterAuthentication::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
+        'userAgentCheck' => UserAgentMultiDeviceCheck::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'userDeviceAuth' => \App\Http\Middleware\UserDeviceAuthenticate::class,
         'multiUserCheck' => \App\Http\Middleware\LimitUserToOneDevice::class,

@@ -9,13 +9,12 @@
                 <p id="lndgpgheadp">everything work.</p>
             </div>
             <div class="ldngheadsec">
-
                 @guest
                     <form id="ldngpgregform" action="{{ route('register') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <h2 style="font-family: 'Product Sans';">Create Your Account</h2>
+                        <h2>Create Your Account</h2>
                         <h4>join free today.</h4>
-                        <div class="lndpglgninptdv">
+                        <div class="lndpglgninptdv" style="margin-top:13px">
                             <label class="lrg-inpt-lbl">Full name*</label>
                             <input id="name" name="name" class="hm-reg-inpt" type="text" autocomplete="off"  required/>
                             @error('name')
@@ -52,33 +51,6 @@
 
             </div>
         </div>
-        <div class="lndgpgesecdv">
-            <h2 class="lndgpgsecheader">Business Account</h2>
-            <p class="lndgpgsecselhd">Work Management</p>
-            <div id="ldngpgsitebuscntsell" class="ldngpgsitecntsell">
-                <div class="webfuncselldv" style="border-color:#0D9BB4;">Workflow</div>
-                <div class="webfuncselldv">CRM</div>
-                <div class="webfuncselldv">Recruitment</div>
-                <div class="webfuncselldv">Tasks</div>
-                <div class="webfuncselldv">Messenger</div>
-                <div class="webfuncselldv">Projects</div>
-                <div class="webfuncselldv">Scheduling</div>
-                <div class="webfuncselldv">Compliance</div>
-                <input id="selfuncbusvalinpt" type="hidden" value="0"/>
-            </div>
-        </div>
-        <div class="lndgpgesecdv">
-            <h2 class="lndgpgsecheader">User Account</h2>
-            <p class="lndgpgsecselhd">Career Development</p>
-            <div id="ldngpgsiteusrcntsell" class="ldngpgsitecntsell">
-                <div class="webfuncselldv" style="border-color:#0D9BB4;">Job Search</div>
-                <div class="webfuncselldv">Freelance</div>
-                <div class="webfuncselldv">Contracting</div>
-                <div class="webfuncselldv">Network</div>
-                <div class="webfuncselldv">Projects</div>
-                <input id="selfuncusrvalinpt" type="hidden" value="0"/>
-            </div>
-        </div>
     </section>
     <style type="text/css">
         #landingheader{
@@ -93,10 +65,10 @@
             min-height:550px;
         }
         .ldngheadsec:first-child{
-            width:65%;
+            width:60%;
         }
         .ldngheadsec:last-child{
-            width:35%;
+            width:40%;
         }
         #lndgpgwebname{
             margin-top:120px;
@@ -116,57 +88,21 @@
             font-weight:bolder;
             line-height:1.8em;
         }
-        .ldngpgsitecntsell{
-            width:100%;
-            height:250px;
-            margin-top:10px;
-            display:flex;
-            flex-direction: row;
-            justify-content:flex-start;
-            flex-wrap:wrap;
-        }
-        .webfuncselldv{
-            width:150px;
-            height:150px;
-            border:solid 1.5px lightgray;
-            border-radius:20px;
-            display:flex;
-            flex-direction:column;
-            justify-content:center;
-            align-items: center;
-            margin:20px;
-            overflow:hidden;
-            font-size:15px;
-            font-weight:bolder;
-            color:#1770E2;
-            padding:3px;
-            -webkit-transition : border 500ms ease-out;
-            -moz-transition : border 500ms ease-out;
-            -o-transition : border 500ms ease-out;
-            transition : border 500ms ease-out;
-            cursor:pointer;
-        }
-        .lndgpgesecdv{
-            width:100%;
-            display:flex;
-            flex-direction:column;
-            margin-top:20px;
-            height:700px;
-        }
         #ldngpgregform{
+            width:400px;
             margin-top:30px;
-            font-family:'Open Sans';
+            font-family:'Helvetica Neue','Open Sans',sans-serif;
         }
         #ldngpgregform h2 {
-            font-size:30px;
+            font-size:26px;
             margin-bottom:10px;
         }
         #ldngpgregform h4 {
-            font-size:18px;
+            font-size:17px;
             font-weight:200;
         }
         .lndpglgninptdv{
-            padding-top:20px;
+            padding-top:12px;
             display:flex;
             flex-direction:column;
         }
@@ -176,16 +112,6 @@
             font-size:19px;
             padding:14px 0px;
         }
-        .lndgpgsecheader{
-            margin-top:30px;
-            margin-left:20px;
-            font-size:30px;
-            font-family:'Montserrat','Open Sans',sans-serif;
-            font-weight:lighter;
-        }
-        .lndgpgsecselhd{
-            margin-left:30px;
-        }
         .hm-reg-inpt{
             padding:2%;
             width:96%;
@@ -194,7 +120,7 @@
             font-weight:lighter;
             letter-spacing: 1.5px;
             color:rgb(60,60,60);
-            border-radius:1px;
+            border-radius:3px;
             border:solid 1px rgb(210,210,210);
             background-color:white;
         }

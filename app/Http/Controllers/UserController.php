@@ -8,13 +8,12 @@ use Illuminate\Support\Facades\Cookie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-class UserController extends Controller
+class UserController extends ApiController
 {
 
     public function __construct()
     {
-        $this->middleware('auth');
-        $this->middleware('userDeviceAuth');
+        parent::__construct();
     }
 
     /**
@@ -24,11 +23,8 @@ class UserController extends Controller
      */
     public function fetchAllSessionData(){
 
-        if(Session::has('id')){
-
-            $session_data = json_encode( Session::all() , true);
-
-            return response($session_data, 200)
+        if(Session::has('loggedIn')){
+            return response(Session::all(), 200)
                 ->header('Content-Type', 'application/json');
         }
 
@@ -50,5 +46,15 @@ class UserController extends Controller
         }
         return response("", 500)
             ->header('Content-Type', 'text/plain');
+    }
+
+    public function fetchAllUsersCloudInvitations(User $user){
+        $invitations = $user->cloudInvitations;
+
+        foreach ($invitations as $invitation) {
+            $invitation->company;
+        };
+
+        return response()->json($invitations, 200);
     }
 }

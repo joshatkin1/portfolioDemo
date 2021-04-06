@@ -20,7 +20,7 @@
                         <p tabindex="-1">Password</p>
                         <a href="/password/reset" tabindex="-1" style="font-size:11px;">forgot password?</a>
                     </div>
-                    <input id="password" class="lrg-inpt" name="password" type="password" autocomplete="off" placeholder="******"/>
+                    <input id="password" class="lrg-inpt" name="password" type="password" autocomplete="password" x-autocompletetype=”password” autocompletetype="password" placeholder="******"/>
                     @error('password')
                     <span class="invalid-login-feedback" role="alert">
                     {{ $message }}

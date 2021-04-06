@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\api;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Mail\VerificationCodeEmail;
@@ -56,6 +56,7 @@ class ApiAuthenticationController extends Controller
         if (! $token = auth()->attempt($credentials)) {
             return redirect()->back()->withErrors("password" , "invalid credentials");
         }
+
         $request->session()->regenerate();
         $user = auth()->user();
 
@@ -69,12 +70,13 @@ class ApiAuthenticationController extends Controller
             'device_auth' => false,
         ]);
 
+        $redis = Redis::connection();
+        $redis->set(Session::get('id') . ':deviceAgent', $request->header('user-agent'));
+
         $device_verf_cookie =  $request->cookie('deviceVerificationKey');
         //GET USER DEVICE ID HASH CHECK IF DEVICE IS VERIFIED AND REDIRECT TO MFA IF (IP + HTTP_USER_AGENT hashed)
         if($device_verf_cookie && $device_verf_cookie !== "" && $device_verf_cookie !== null){
 
-            $redis = Redis::connection();
-            $redis->set($user->id . ':deviceVerificationKey', $device_verf_cookie);
             $user->deviceCookie = $device_verf_cookie;
 
             $user_device = $_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT'] . $device_verf_cookie;
@@ -91,7 +93,7 @@ class ApiAuthenticationController extends Controller
             }
         }
 
-        $emailcookie = cookie('email', $request->input('email'), 12321311, '/', '', true, true );
+        $emailcookie = cookie('email', $request->input('email'), 12321311, '/', '', true, false );
         $cookie = cookie('jwt', $token, 7200, '/', '', true, true );
 
         if(!Session::get("device_auth")){
@@ -101,7 +103,7 @@ class ApiAuthenticationController extends Controller
             return redirect('api/verify-device')->withCookies([$emailcookie, $cookie]);
         }
 
-        return redirect('/app')->withCookies([$emailcookie, $cookie]);
+        return redirect('/profile')->withCookies([$emailcookie, $cookie]);
     }
 
 

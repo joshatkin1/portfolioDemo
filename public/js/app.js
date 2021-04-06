@@ -54676,28 +54676,6 @@ module.exports = "/images/cloud-active.svg?15572477635c5c1244c6fbeaf743b77c";
 
 /***/ }),
 
-/***/ "./public/images/jobs-active.svg":
-/*!***************************************!*\
-  !*** ./public/images/jobs-active.svg ***!
-  \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/jobs-active.svg?7a19172134da62ce27b32f4a4662df79";
-
-/***/ }),
-
-/***/ "./public/images/jobs.svg":
-/*!********************************!*\
-  !*** ./public/images/jobs.svg ***!
-  \********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/jobs.svg?b002aef9da8221095a78a063fd506b76";
-
-/***/ }),
-
 /***/ "./public/images/messaging-active.svg":
 /*!********************************************!*\
   !*** ./public/images/messaging-active.svg ***!
@@ -54739,39 +54717,6 @@ module.exports = "/images/notifications-active.svg?4c1e054dca931d62d52bd415622f3
 /***/ (function(module, exports) {
 
 module.exports = "/images/notifications.svg?c2b1f5f81683b6185c95c4cfb6b89915";
-
-/***/ }),
-
-/***/ "./public/images/personal-active.svg":
-/*!*******************************************!*\
-  !*** ./public/images/personal-active.svg ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/personal-active.svg?403aa030af7da352109b3e16bbb90651";
-
-/***/ }),
-
-/***/ "./public/images/personal.svg":
-/*!************************************!*\
-  !*** ./public/images/personal.svg ***!
-  \************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/personal.svg?e6f299a816a4c04674165b09ab74c033";
-
-/***/ }),
-
-/***/ "./public/images/user-circle-solid.svg":
-/*!*********************************************!*\
-  !*** ./public/images/user-circle-solid.svg ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/user-circle-solid.svg?1ff397e8c0b9f8ccfd8f07aa38a699b5";
 
 /***/ }),
 
@@ -54822,12 +54767,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_appActions_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./actions/appActions.js */ "./resources/js/app/actions/appActions.js");
 /* harmony import */ var _actions_userActions_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./actions/userActions.js */ "./resources/js/app/actions/userActions.js");
 /* harmony import */ var _components_header_HeaderComponent_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/header/HeaderComponent.js */ "./resources/js/app/components/header/HeaderComponent.js");
-/* harmony import */ var _components_SideNav__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/SideNav */ "./resources/js/app/components/SideNav.js");
-/* harmony import */ var _pages_AccountPage__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./pages/AccountPage */ "./resources/js/app/pages/AccountPage.js");
-/* harmony import */ var _pages_NotificationsPage__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./pages/NotificationsPage */ "./resources/js/app/pages/NotificationsPage.js");
-/* harmony import */ var _pages_MessagesPage__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./pages/MessagesPage */ "./resources/js/app/pages/MessagesPage.js");
-/* harmony import */ var _pages_CloudPage__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./pages/CloudPage */ "./resources/js/app/pages/CloudPage.js");
-/* harmony import */ var _actions_actionTypes__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./actions/actionTypes */ "./resources/js/app/actions/actionTypes.js");
+/* harmony import */ var _pages_NotificationsPage_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./pages/NotificationsPage.js */ "./resources/js/app/pages/NotificationsPage.js");
+/* harmony import */ var _pages_MessagesPage_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./pages/MessagesPage.js */ "./resources/js/app/pages/MessagesPage.js");
+/* harmony import */ var _pages_CloudPage_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./pages/CloudPage.js */ "./resources/js/app/pages/CloudPage.js");
+/* harmony import */ var _pages_CompanySignUpPage_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./pages/CompanySignUpPage.js */ "./resources/js/app/pages/CompanySignUpPage.js");
+/* harmony import */ var _pages_PendingCloudPage_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./pages/PendingCloudPage.js */ "./resources/js/app/pages/PendingCloudPage.js");
 function _typeof(obj) {
   "@babel/helpers - typeof";
 
@@ -54959,7 +54903,6 @@ function _getPrototypeOf(o) {
 
 
 
-
 var AppController = /*#__PURE__*/function (_Component) {
   _inherits(AppController, _Component);
 
@@ -54971,7 +54914,11 @@ var AppController = /*#__PURE__*/function (_Component) {
     _classCallCheck(this, AppController);
 
     _this = _super.call(this, props);
-    _this.state = {};
+    _this.state = {
+      firstTimeLoad: 1,
+      pageLoaded: true,
+      signingUpCompany: false
+    };
     return _this;
   }
 
@@ -54979,20 +54926,56 @@ var AppController = /*#__PURE__*/function (_Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       console.log('AppController componentDidMount');
+      this.startMockPageLoading();
       this.props.fetchSessionData();
     }
   }, {
     key: "shouldComponentUpdate",
     value: function shouldComponentUpdate(nextProps, nextState, nextContext) {
+      var _this$state = this.state,
+          pageLoaded = _this$state.pageLoaded,
+          signingUpCompany = _this$state.signingUpCompany;
       var _this$props = this.props,
           appPage = _this$props.appPage,
           cloudPage = _this$props.cloudPage;
 
-      if (appPage !== nextProps.appPage || cloudPage !== nextProps.cloudPage) {
+      if (pageLoaded !== nextState.pageLoaded || appPage !== nextProps.appPage || cloudPage !== nextProps.cloudPage || signingUpCompany !== nextState.signingUpCompany) {
         return true;
       }
 
       return false;
+    }
+  }, {
+    key: "startMockPageLoading",
+    value: function startMockPageLoading() {
+      var _this2 = this;
+
+      var _this$state2 = this.state,
+          pageLoaded = _this$state2.pageLoaded,
+          firstTimeLoad = _this$state2.firstTimeLoad;
+      var timeoutVal = 2000;
+
+      switch (firstTimeLoad) {
+        case 1:
+          timeoutVal = 3000;
+          break;
+
+        case 0:
+          timeoutVal = 1500;
+          break;
+      }
+
+      var pageLoading = setTimeout(function () {
+        _this2.setState({
+          pageLoaded: true
+        });
+      }, timeoutVal);
+      return function () {
+        return clearTimeout(pageLoading);
+      };
+      this.setState({
+        firstTimeLoad: 0
+      });
     }
   }, {
     key: "displayAppPage",
@@ -55001,19 +54984,19 @@ var AppController = /*#__PURE__*/function (_Component) {
 
       switch (appPage) {
         case 'notifications':
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_NotificationsPage__WEBPACK_IMPORTED_MODULE_9__["default"], {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_NotificationsPage_js__WEBPACK_IMPORTED_MODULE_7__["default"], {
             key: Object(uuid__WEBPACK_IMPORTED_MODULE_3__["v4"])()
           });
           break;
 
         case 'messaging':
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_MessagesPage__WEBPACK_IMPORTED_MODULE_10__["default"], {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_MessagesPage_js__WEBPACK_IMPORTED_MODULE_8__["default"], {
             key: Object(uuid__WEBPACK_IMPORTED_MODULE_3__["v4"])()
           });
           break;
 
         case 'home':
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_CloudPage__WEBPACK_IMPORTED_MODULE_11__["default"], {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_CloudPage_js__WEBPACK_IMPORTED_MODULE_9__["default"], {
             key: Object(uuid__WEBPACK_IMPORTED_MODULE_3__["v4"])()
           });
           break;
@@ -55022,7 +55005,23 @@ var AppController = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      var sessionData = this.props.sessionData;
+      var _this$state3 = this.state,
+          pageLoaded = _this$state3.pageLoaded,
+          signingUpCompany = _this$state3.signingUpCompany;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, pageLoaded ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, sessionData.company_link == null ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "content-wrap algn-cntr"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "outr-header-bar content-wrap algn-cntr"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_header_HeaderComponent_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        key: Object(uuid__WEBPACK_IMPORTED_MODULE_3__["v4"])()
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "inr-content body-content-wrap algn-cntr"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, signingUpCompany ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_CompanySignUpPage_js__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        key: Object(uuid__WEBPACK_IMPORTED_MODULE_3__["v4"])()
+      }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_PendingCloudPage_js__WEBPACK_IMPORTED_MODULE_11__["default"], {
+        key: Object(uuid__WEBPACK_IMPORTED_MODULE_3__["v4"])()
+      })))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "content-wrap algn-cntr"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "outr-header-bar content-wrap algn-cntr"
@@ -55031,11 +55030,16 @@ var AppController = /*#__PURE__*/function (_Component) {
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "inr-content body-content-wrap algn-cntr"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "content-wrap",
-        style: {
-          justifyContent: "stretch"
-        }
-      }, this.displayAppPage())));
+        className: "content-wrap"
+      }, this.displayAppPage())))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "content-wrap algn-cntr loading-page-dv"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        className: "webtitle"
+      }, "workcloud"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "page-loading-bar"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "page-loading-bar-inr"
+      }))));
     }
   }]);
 
@@ -55094,43 +55098,11 @@ appStore.subscribe(function () {
 
 /***/ }),
 
-/***/ "./resources/js/app/actions/accountActions.js":
-/*!****************************************************!*\
-  !*** ./resources/js/app/actions/accountActions.js ***!
-  \****************************************************/
-/*! exports provided: navigateAccountPage, navigateAccountPageSection */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "navigateAccountPage", function() { return navigateAccountPage; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "navigateAccountPageSection", function() { return navigateAccountPageSection; });
-/* harmony import */ var _actionTypes_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./actionTypes.js */ "./resources/js/app/actions/actionTypes.js");
-
-var navigateAccountPage = function navigateAccountPage(newPage) {
-  return function (dispatch) {
-    dispatch({
-      type: _actionTypes_js__WEBPACK_IMPORTED_MODULE_0__["NAVIGATE_ACCOUNT"],
-      payload: newPage
-    });
-  };
-};
-var navigateAccountPageSection = function navigateAccountPageSection(sec) {
-  return function (dispatch) {
-    dispatch({
-      type: _actionTypes_js__WEBPACK_IMPORTED_MODULE_0__["NAVIGATE_ACCOUNT_PAGE_SECTION"],
-      payload: sec
-    });
-  };
-};
-
-/***/ }),
-
 /***/ "./resources/js/app/actions/actionTypes.js":
 /*!*************************************************!*\
   !*** ./resources/js/app/actions/actionTypes.js ***!
   \*************************************************/
-/*! exports provided: NAVIGATE_APP, NAVIGATE_CLOUD, TOGGLE_APP_NAV_VIEWABLE, OPEN_APP_NOTIF, CLOSE_APP_NOTIF, FETCH_SESSION_DATA, FETCH_USER_COMPANY_NAME, NAVIGATE_ACCOUNT, NAVIGATE_ACCOUNT_PAGE_SECTION, TOGGLE_CLIENT_PAGE_SECTION, UPDATE_CLIENT_SEARCH_VALUE, CURRENT_CLIENT_DETAILS, SET_CLIENT_SEARCH_OPTIONS, SET_CURRENT_CLIENT_DETAILS, SET_CLIENT_SEARCH_PAGINATION_OPTIONS, ADD_RECENT_CLIENT_ACCOUNT */
+/*! exports provided: NAVIGATE_APP, NAVIGATE_CLOUD, TOGGLE_APP_NAV_VIEWABLE, OPEN_APP_NOTIF, CLOSE_APP_NOTIF, FETCH_SESSION_DATA, FETCH_USER_COMPANY_NAME, FETCH_USERS_CLOUD_INVITATIONS, NAVIGATE_ACCOUNT, NAVIGATE_ACCOUNT_PAGE_SECTION, TOGGLE_CLIENT_PAGE_SECTION, UPDATE_CLIENT_SEARCH_VALUE, CURRENT_CLIENT_DETAILS, SET_CLIENT_SEARCH_OPTIONS, SET_CURRENT_CLIENT_DETAILS, SET_CLIENT_SEARCH_PAGINATION_OPTIONS, ADD_RECENT_CLIENT_ACCOUNT */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55142,6 +55114,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLOSE_APP_NOTIF", function() { return CLOSE_APP_NOTIF; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_SESSION_DATA", function() { return FETCH_SESSION_DATA; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_USER_COMPANY_NAME", function() { return FETCH_USER_COMPANY_NAME; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_USERS_CLOUD_INVITATIONS", function() { return FETCH_USERS_CLOUD_INVITATIONS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NAVIGATE_ACCOUNT", function() { return NAVIGATE_ACCOUNT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NAVIGATE_ACCOUNT_PAGE_SECTION", function() { return NAVIGATE_ACCOUNT_PAGE_SECTION; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TOGGLE_CLIENT_PAGE_SECTION", function() { return TOGGLE_CLIENT_PAGE_SECTION; });
@@ -55159,7 +55132,8 @@ var OPEN_APP_NOTIF = 'OPEN_APP_NOTIF';
 var CLOSE_APP_NOTIF = 'CLOSE_APP_NOTIF'; //USER ACTION TYPES
 
 var FETCH_SESSION_DATA = 'FETCH_SESSION_DATA';
-var FETCH_USER_COMPANY_NAME = 'FETCH_USER_COMPANY_NAME'; //ACCOUNT ACTION TYPES
+var FETCH_USER_COMPANY_NAME = 'FETCH_USER_COMPANY_NAME';
+var FETCH_USERS_CLOUD_INVITATIONS = 'FETCH_USERS_CLOUD_INVITATIONS'; //ACCOUNT ACTION TYPES
 
 var NAVIGATE_ACCOUNT = 'NAVIGATE_ACCOUNT';
 var NAVIGATE_ACCOUNT_PAGE_SECTION = 'NAVIGATE_ACCOUNT_PAGE_SECTION'; //CLIENT ACTION TYPES
@@ -55231,102 +55205,25 @@ var closeAppNotif = function closeAppNotif() {
 
 /***/ }),
 
-/***/ "./resources/js/app/actions/clientActions.js":
-/*!***************************************************!*\
-  !*** ./resources/js/app/actions/clientActions.js ***!
-  \***************************************************/
-/*! exports provided: toggleClientContentPage, submitCreateClientForm, updateClientSearchOptions, setCurrentClientAccountDetails, paginateClientSearchAll */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toggleClientContentPage", function() { return toggleClientContentPage; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "submitCreateClientForm", function() { return submitCreateClientForm; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateClientSearchOptions", function() { return updateClientSearchOptions; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setCurrentClientAccountDetails", function() { return setCurrentClientAccountDetails; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "paginateClientSearchAll", function() { return paginateClientSearchAll; });
-/* harmony import */ var _actionTypes_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./actionTypes.js */ "./resources/js/app/actions/actionTypes.js");
-
-var toggleClientContentPage = function toggleClientContentPage(page) {
-  return function (dispatch) {
-    dispatch({
-      type: _actionTypes_js__WEBPACK_IMPORTED_MODULE_0__["TOGGLE_CLIENT_PAGE_SECTION"],
-      payload: page
-    });
-  };
-};
-var submitCreateClientForm = function submitCreateClientForm(data) {
-  return function (dispatch) {
-    axios.post('/resources/clients/create/', data).then(function (response) {
-      dispatch({
-        type: _actionTypes_js__WEBPACK_IMPORTED_MODULE_0__["CURRENT_CLIENT_DETAILS"],
-        payload: response.data
-      });
-    }).then(dispatch({
-      type: _actionTypes_js__WEBPACK_IMPORTED_MODULE_0__["TOGGLE_CLIENT_PAGE_SECTION"],
-      payload: "clientAccount"
-    }))["catch"](function (errors) {
-      console.log(errors);
-    });
-  };
-};
-var updateClientSearchOptions = function updateClientSearchOptions(search) {
-  return function (dispatch) {
-    axios.get('/resources/clients/search?search_value=' + search).then(function (response) {
-      dispatch({
-        type: _actionTypes_js__WEBPACK_IMPORTED_MODULE_0__["SET_CLIENT_SEARCH_OPTIONS"],
-        payload: response.data
-      });
-    })["catch"](function (errors) {
-      console.log(errors);
-    });
-  };
-};
-var setCurrentClientAccountDetails = function setCurrentClientAccountDetails(currentClient) {
-  return function (dispatch) {
-    dispatch({
-      type: _actionTypes_js__WEBPACK_IMPORTED_MODULE_0__["SET_CURRENT_CLIENT_DETAILS"],
-      payload: currentClient
-    });
-    dispatch({
-      type: _actionTypes_js__WEBPACK_IMPORTED_MODULE_0__["ADD_RECENT_CLIENT_ACCOUNT"],
-      payload: currentClient
-    });
-  };
-};
-var paginateClientSearchAll = function paginateClientSearchAll(search, clientSearchPage) {
-  return function (dispatch) {
-    axios.get('/resources/clients/search/all/paginate?search_value=' + search + '&page=' + clientSearchPage).then(function (response) {
-      dispatch({
-        type: _actionTypes_js__WEBPACK_IMPORTED_MODULE_0__["SET_CLIENT_SEARCH_PAGINATION_OPTIONS"],
-        payload: response.data
-      });
-    })["catch"](function (errors) {
-      console.log(errors);
-    });
-  };
-};
-
-/***/ }),
-
 /***/ "./resources/js/app/actions/userActions.js":
 /*!*************************************************!*\
   !*** ./resources/js/app/actions/userActions.js ***!
   \*************************************************/
-/*! exports provided: fetchSessionData, getCompanyLinkName */
+/*! exports provided: fetchSessionData, getCompanyLinkName, getUsersCompanyCloudInvitations */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchSessionData", function() { return fetchSessionData; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCompanyLinkName", function() { return getCompanyLinkName; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getUsersCompanyCloudInvitations", function() { return getUsersCompanyCloudInvitations; });
 /* harmony import */ var _actionTypes_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./actionTypes.js */ "./resources/js/app/actions/actionTypes.js");
 
 var fetchSessionData = function fetchSessionData() {
   return function (dispatch) {
     axios({
       method: 'GET',
-      url: '/resources/app/data/session/all',
+      url: 'api/resources/data/session/all',
       validateStatus: function validateStatus() {
         return true;
       }
@@ -55346,7 +55243,7 @@ var getCompanyLinkName = function getCompanyLinkName() {
   return function (dispatch) {
     axios({
       method: 'GET',
-      url: '/resources/app/data/session/company-link-name',
+      url: 'api/resources/data/session/company-link-name',
       validateStatus: function validateStatus() {
         return true;
       }
@@ -55354,6 +55251,26 @@ var getCompanyLinkName = function getCompanyLinkName() {
       if (response.status === 200) {
         dispatch({
           type: _actionTypes_js__WEBPACK_IMPORTED_MODULE_0__["FETCH_USER_COMPANY_NAME"],
+          payload: response.data
+        });
+      } else {}
+    })["catch"](function (errors) {
+      console.log(errors);
+    });
+  };
+};
+var getUsersCompanyCloudInvitations = function getUsersCompanyCloudInvitations() {
+  return function (dispatch) {
+    axios({
+      method: 'GET',
+      url: 'api/resources/data/user/company/cloud/invitations',
+      validateStatus: function validateStatus() {
+        return true;
+      }
+    }).then(function (response) {
+      if (response.status === 200) {
+        dispatch({
+          type: _actionTypes_js__WEBPACK_IMPORTED_MODULE_0__["FETCH_USERS_CLOUD_INVITATIONS"],
           payload: response.data
         });
       } else {}
@@ -55404,931 +55321,6 @@ function SiteRouting() {
   })))));
 }
 react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SiteRouting, null), document.getElementById('root'));
-
-/***/ }),
-
-/***/ "./resources/js/app/components/AccountContentSectionNavigation.js":
-/*!************************************************************************!*\
-  !*** ./resources/js/app/components/AccountContentSectionNavigation.js ***!
-  \************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! uuid */ "./node_modules/uuid/index.js");
-/* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(uuid__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _actions_accountActions_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../actions/accountActions.js */ "./resources/js/app/actions/accountActions.js");
-function _typeof(obj) {
-  "@babel/helpers - typeof";
-
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    _typeof = function _typeof(obj) {
-      return typeof obj;
-    };
-  } else {
-    _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-    };
-  }
-
-  return _typeof(obj);
-}
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  return Constructor;
-}
-
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      writable: true,
-      configurable: true
-    }
-  });
-  if (superClass) _setPrototypeOf(subClass, superClass);
-}
-
-function _setPrototypeOf(o, p) {
-  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  };
-
-  return _setPrototypeOf(o, p);
-}
-
-function _createSuper(Derived) {
-  var hasNativeReflectConstruct = _isNativeReflectConstruct();
-
-  return function _createSuperInternal() {
-    var Super = _getPrototypeOf(Derived),
-        result;
-
-    if (hasNativeReflectConstruct) {
-      var NewTarget = _getPrototypeOf(this).constructor;
-
-      result = Reflect.construct(Super, arguments, NewTarget);
-    } else {
-      result = Super.apply(this, arguments);
-    }
-
-    return _possibleConstructorReturn(this, result);
-  };
-}
-
-function _possibleConstructorReturn(self, call) {
-  if (call && (_typeof(call) === "object" || typeof call === "function")) {
-    return call;
-  }
-
-  return _assertThisInitialized(self);
-}
-
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return self;
-}
-
-function _isNativeReflectConstruct() {
-  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
-  if (Reflect.construct.sham) return false;
-  if (typeof Proxy === "function") return true;
-
-  try {
-    Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-
-function _getPrototypeOf(o) {
-  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf(o);
-}
-
-
-
-
-
-
-
-var AccountContentSectionNavigation = /*#__PURE__*/function (_Component) {
-  _inherits(AccountContentSectionNavigation, _Component);
-
-  var _super = _createSuper(AccountContentSectionNavigation);
-
-  function AccountContentSectionNavigation(props) {
-    var _this;
-
-    _classCallCheck(this, AccountContentSectionNavigation);
-
-    _this = _super.call(this, props);
-    _this.state = {
-      contentSections: []
-    };
-    return _this;
-  }
-
-  _createClass(AccountContentSectionNavigation, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var accountPage = this.props.accountPage;
-
-      switch (accountPage) {
-        case 'profile':
-          this.setState({
-            contentSections: ["about", "cv"]
-          });
-          break;
-
-        case 'work':
-          this.setState({
-            contentSections: ["preferences", "work", "applications"]
-          });
-          break;
-      }
-    }
-  }, {
-    key: "shouldComponentUpdate",
-    value: function shouldComponentUpdate(nextProps, nextState, nextContext) {
-      var contentSections = this.state.contentSections;
-      var _this$props = this.props,
-          accountPage = _this$props.accountPage,
-          accountPageSection = _this$props.accountPageSection;
-
-      if (accountPage !== nextProps.accountPage || contentSections !== nextState.contentSections || accountPageSection !== nextProps.accountPageSection) {
-        return true;
-      }
-
-      return false;
-    }
-  }, {
-    key: "onClick",
-    value: function onClick(event) {
-      this.props.navigateAccountPageSection(event.target.value);
-    }
-  }, {
-    key: "displayAccountPageSectionNavButtons",
-    value: function displayAccountPageSectionNavButtons() {
-      var _this2 = this;
-
-      var contentSections = this.state.contentSections;
-      var accountPageSection = this.props.accountPageSection;
-      var displayButtons = contentSections.map(function (sec) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: accountPageSection === sec ? "acnt-nav-btns actv-nav-btn" : "acnt-nav-btns",
-          onClick: function onClick(event) {
-            _this2.onClick(event);
-          },
-          value: sec,
-          key: Object(uuid__WEBPACK_IMPORTED_MODULE_3__["v4"])()
-        }, sec);
-      });
-      return displayButtons;
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, this.displayAccountPageSectionNavButtons());
-    }
-  }]);
-
-  return AccountContentSectionNavigation;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-
-AccountContentSectionNavigation.propTypes = {
-  navigateAccountPageSection: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.func.isRequired,
-  accountPageSection: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string.isRequired,
-  accountPage: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string.isRequired
-};
-
-var mapStateToProps = function mapStateToProps(state) {
-  return {
-    accountPageSection: state.account.accountPageSection,
-    accountPage: state.account.accountPage
-  };
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {
-  navigateAccountPageSection: _actions_accountActions_js__WEBPACK_IMPORTED_MODULE_4__["navigateAccountPageSection"]
-})(AccountContentSectionNavigation));
-
-/***/ }),
-
-/***/ "./resources/js/app/components/AccountPageNavigation.js":
-/*!**************************************************************!*\
-  !*** ./resources/js/app/components/AccountPageNavigation.js ***!
-  \**************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! uuid */ "./node_modules/uuid/index.js");
-/* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(uuid__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _header_AccountNavBtn_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./header/AccountNavBtn.js */ "./resources/js/app/components/header/AccountNavBtn.js");
-function _typeof(obj) {
-  "@babel/helpers - typeof";
-
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    _typeof = function _typeof(obj) {
-      return typeof obj;
-    };
-  } else {
-    _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-    };
-  }
-
-  return _typeof(obj);
-}
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  return Constructor;
-}
-
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      writable: true,
-      configurable: true
-    }
-  });
-  if (superClass) _setPrototypeOf(subClass, superClass);
-}
-
-function _setPrototypeOf(o, p) {
-  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  };
-
-  return _setPrototypeOf(o, p);
-}
-
-function _createSuper(Derived) {
-  var hasNativeReflectConstruct = _isNativeReflectConstruct();
-
-  return function _createSuperInternal() {
-    var Super = _getPrototypeOf(Derived),
-        result;
-
-    if (hasNativeReflectConstruct) {
-      var NewTarget = _getPrototypeOf(this).constructor;
-
-      result = Reflect.construct(Super, arguments, NewTarget);
-    } else {
-      result = Super.apply(this, arguments);
-    }
-
-    return _possibleConstructorReturn(this, result);
-  };
-}
-
-function _possibleConstructorReturn(self, call) {
-  if (call && (_typeof(call) === "object" || typeof call === "function")) {
-    return call;
-  }
-
-  return _assertThisInitialized(self);
-}
-
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return self;
-}
-
-function _isNativeReflectConstruct() {
-  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
-  if (Reflect.construct.sham) return false;
-  if (typeof Proxy === "function") return true;
-
-  try {
-    Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-
-function _getPrototypeOf(o) {
-  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf(o);
-}
-
-
-
-
-
-
-
-var AccountPageNavigation = /*#__PURE__*/function (_Component) {
-  _inherits(AccountPageNavigation, _Component);
-
-  var _super = _createSuper(AccountPageNavigation);
-
-  function AccountPageNavigation(props) {
-    var _this;
-
-    _classCallCheck(this, AccountPageNavigation);
-
-    _this = _super.call(this, props);
-    _this.state = {};
-    return _this;
-  }
-
-  _createClass(AccountPageNavigation, [{
-    key: "shouldComponentUpdate",
-    value: function shouldComponentUpdate(nextProps, nextState, nextContext) {
-      return false;
-    }
-  }, {
-    key: "onClick",
-    value: function onClick() {
-      var accountNavBarActive = this.state.accountNavBarActive;
-      this.setState({
-        accountNavBarActive: !accountNavBarActive
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "algn-btm wrap-end",
-        style: {
-          height: "100%"
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "wrap-space-between"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_AccountNavBtn_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        key: Object(uuid__WEBPACK_IMPORTED_MODULE_3__["v4"])(),
-        buttonPage: "profile"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_AccountNavBtn_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        key: Object(uuid__WEBPACK_IMPORTED_MODULE_3__["v4"])(),
-        buttonPage: "work"
-      })));
-    }
-  }]);
-
-  return AccountPageNavigation;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-
-AccountPageNavigation.propTypes = {};
-
-var mapStateToProps = function mapStateToProps(state) {
-  return {};
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {})(AccountPageNavigation));
-
-/***/ }),
-
-/***/ "./resources/js/app/components/SideNav.js":
-/*!************************************************!*\
-  !*** ./resources/js/app/components/SideNav.js ***!
-  \************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! uuid */ "./node_modules/uuid/index.js");
-/* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(uuid__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _items_buttons_SideNavButton_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../items/buttons/SideNavButton.js */ "./resources/js/app/items/buttons/SideNavButton.js");
-function _typeof(obj) {
-  "@babel/helpers - typeof";
-
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    _typeof = function _typeof(obj) {
-      return typeof obj;
-    };
-  } else {
-    _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-    };
-  }
-
-  return _typeof(obj);
-}
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  return Constructor;
-}
-
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      writable: true,
-      configurable: true
-    }
-  });
-  if (superClass) _setPrototypeOf(subClass, superClass);
-}
-
-function _setPrototypeOf(o, p) {
-  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  };
-
-  return _setPrototypeOf(o, p);
-}
-
-function _createSuper(Derived) {
-  var hasNativeReflectConstruct = _isNativeReflectConstruct();
-
-  return function _createSuperInternal() {
-    var Super = _getPrototypeOf(Derived),
-        result;
-
-    if (hasNativeReflectConstruct) {
-      var NewTarget = _getPrototypeOf(this).constructor;
-
-      result = Reflect.construct(Super, arguments, NewTarget);
-    } else {
-      result = Super.apply(this, arguments);
-    }
-
-    return _possibleConstructorReturn(this, result);
-  };
-}
-
-function _possibleConstructorReturn(self, call) {
-  if (call && (_typeof(call) === "object" || typeof call === "function")) {
-    return call;
-  }
-
-  return _assertThisInitialized(self);
-}
-
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return self;
-}
-
-function _isNativeReflectConstruct() {
-  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
-  if (Reflect.construct.sham) return false;
-  if (typeof Proxy === "function") return true;
-
-  try {
-    Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-
-function _getPrototypeOf(o) {
-  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf(o);
-}
-
-
-
-
-
-
-
-var SideNav = /*#__PURE__*/function (_Component) {
-  _inherits(SideNav, _Component);
-
-  var _super = _createSuper(SideNav);
-
-  function SideNav(props) {
-    var _this;
-
-    _classCallCheck(this, SideNav);
-
-    _this = _super.call(this, props);
-    _this.state = {};
-    return _this;
-  }
-
-  _createClass(SideNav, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {}
-  }, {
-    key: "shouldComponentUpdate",
-    value: function shouldComponentUpdate(nextProps, nextState, nextContext) {
-      var appPage = this.props.appPage;
-
-      if (appPage !== nextProps.appPage) {
-        return true;
-      }
-
-      return false;
-    }
-  }, {
-    key: "displayAppSectionsNavButtons",
-    value: function displayAppSectionsNavButtons() {
-      var cloudSubs = ["Dashboard", "Clients", "Projects", "Tickets", "Tasks", "UI/UX"];
-      var displayPageButtons = cloudSubs.map(function (sub, index) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_items_buttons_SideNavButton_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
-          key: Object(uuid__WEBPACK_IMPORTED_MODULE_3__["v4"])(),
-          pageName: sub
-        });
-      });
-      return displayPageButtons;
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var cloudPage = this.props.cloudPage;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
-        className: "cloud-nav-bar content-wrap"
-      }, this.displayAppSectionsNavButtons());
-    }
-  }]);
-
-  return SideNav;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-
-SideNav.propTypes = {
-  cloudPage: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string.isRequired
-};
-
-var mapStateToProps = function mapStateToProps(state) {
-  return {
-    cloudPage: state.app.cloudPage
-  };
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {})(SideNav));
-
-/***/ }),
-
-/***/ "./resources/js/app/components/header/AccountNavBtn.js":
-/*!*************************************************************!*\
-  !*** ./resources/js/app/components/header/AccountNavBtn.js ***!
-  \*************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! uuid */ "./node_modules/uuid/index.js");
-/* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(uuid__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _public_images_personal_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../public/images/personal.svg */ "./public/images/personal.svg");
-/* harmony import */ var _public_images_personal_svg__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_public_images_personal_svg__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _public_images_personal_active_svg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../public/images/personal-active.svg */ "./public/images/personal-active.svg");
-/* harmony import */ var _public_images_personal_active_svg__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_public_images_personal_active_svg__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _public_images_jobs_svg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../public/images/jobs.svg */ "./public/images/jobs.svg");
-/* harmony import */ var _public_images_jobs_svg__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_public_images_jobs_svg__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _public_images_jobs_active_svg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../../public/images/jobs-active.svg */ "./public/images/jobs-active.svg");
-/* harmony import */ var _public_images_jobs_active_svg__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_public_images_jobs_active_svg__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _actions_accountActions_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../actions/accountActions.js */ "./resources/js/app/actions/accountActions.js");
-function _typeof(obj) {
-  "@babel/helpers - typeof";
-
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    _typeof = function _typeof(obj) {
-      return typeof obj;
-    };
-  } else {
-    _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-    };
-  }
-
-  return _typeof(obj);
-}
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  return Constructor;
-}
-
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      writable: true,
-      configurable: true
-    }
-  });
-  if (superClass) _setPrototypeOf(subClass, superClass);
-}
-
-function _setPrototypeOf(o, p) {
-  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  };
-
-  return _setPrototypeOf(o, p);
-}
-
-function _createSuper(Derived) {
-  var hasNativeReflectConstruct = _isNativeReflectConstruct();
-
-  return function _createSuperInternal() {
-    var Super = _getPrototypeOf(Derived),
-        result;
-
-    if (hasNativeReflectConstruct) {
-      var NewTarget = _getPrototypeOf(this).constructor;
-
-      result = Reflect.construct(Super, arguments, NewTarget);
-    } else {
-      result = Super.apply(this, arguments);
-    }
-
-    return _possibleConstructorReturn(this, result);
-  };
-}
-
-function _possibleConstructorReturn(self, call) {
-  if (call && (_typeof(call) === "object" || typeof call === "function")) {
-    return call;
-  }
-
-  return _assertThisInitialized(self);
-}
-
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return self;
-}
-
-function _isNativeReflectConstruct() {
-  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
-  if (Reflect.construct.sham) return false;
-  if (typeof Proxy === "function") return true;
-
-  try {
-    Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-
-function _getPrototypeOf(o) {
-  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf(o);
-}
-
-
-
-
-
-
-
-
-
-
-
-var AccountNavBtn = /*#__PURE__*/function (_Component) {
-  _inherits(AccountNavBtn, _Component);
-
-  var _super = _createSuper(AccountNavBtn);
-
-  function AccountNavBtn(props) {
-    var _this;
-
-    _classCallCheck(this, AccountNavBtn);
-
-    _this = _super.call(this, props);
-    _this.state = {};
-    return _this;
-  }
-
-  _createClass(AccountNavBtn, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {}
-  }, {
-    key: "shouldComponentUpdate",
-    value: function shouldComponentUpdate(nextProps, nextState, nextContext) {
-      var accountPage = this.props.accountPage;
-
-      if (accountPage !== nextProps.accountPage) {
-        return true;
-      }
-
-      return false;
-    }
-  }, {
-    key: "onClick",
-    value: function onClick() {
-      var buttonPage = this.props.buttonPage;
-      this.props.navigateAccountPage(buttonPage);
-    }
-  }, {
-    key: "displaySvg",
-    value: function displaySvg() {
-      var buttonPage = this.props.buttonPage;
-      var svgIcon = "";
-
-      switch (buttonPage) {
-        case 'profile':
-          svgIcon = _public_images_personal_svg__WEBPACK_IMPORTED_MODULE_4___default.a;
-          break;
-
-        case 'work':
-          svgIcon = _public_images_jobs_svg__WEBPACK_IMPORTED_MODULE_6___default.a;
-          break;
-      }
-
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: svgIcon,
-        height: "30px"
-      });
-    }
-  }, {
-    key: "displayActiveSvg",
-    value: function displayActiveSvg() {
-      var buttonPage = this.props.buttonPage;
-      var svgIcon = "";
-
-      switch (buttonPage) {
-        case 'profile':
-          svgIcon = _public_images_personal_active_svg__WEBPACK_IMPORTED_MODULE_5___default.a;
-          break;
-
-        case 'work':
-          svgIcon = _public_images_jobs_active_svg__WEBPACK_IMPORTED_MODULE_7___default.a;
-          break;
-      }
-
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: svgIcon,
-        height: "30px"
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this2 = this;
-
-      var _this$props = this.props,
-          buttonPage = _this$props.buttonPage,
-          accountPage = _this$props.accountPage;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "algn-btm wrap-middle"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: accountPage === buttonPage ? "actv-nav-bar-btns acnt-nav-bar-btn" : "nav-bar-btns acnt-nav-bar-btn",
-        onClick: function onClick() {
-          _this2.onClick();
-        }
-      }, accountPage === buttonPage ? this.displayActiveSvg() : this.displaySvg(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "nav-btn-p",
-        style: accountPage === buttonPage ? {
-          color: "#1770E2"
-        } : {}
-      }, buttonPage)));
-    }
-  }]);
-
-  return AccountNavBtn;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-
-AccountNavBtn.propTypes = {
-  navigateAccountPage: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.func.isRequired,
-  accountPage: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string.isRequired
-};
-
-var mapStateToProps = function mapStateToProps(state) {
-  return {
-    accountPage: state.account.accountPage
-  };
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {
-  navigateAccountPage: _actions_accountActions_js__WEBPACK_IMPORTED_MODULE_8__["navigateAccountPage"]
-})(AccountNavBtn));
 
 /***/ }),
 
@@ -56875,25 +55867,25 @@ var AppNavButtons = /*#__PURE__*/function (_Component) {
         alt: "account navigation",
         height: "35px"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, appNavBarViewable === true ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "account-nav-bar algn-cntr",
-        style: {
-          justifyContent: "space-between"
-        }
+        className: "app-nav-bar"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "account-nav-btn",
+        className: "app-nav-btn",
         onClick: function onClick() {
           _this2.buttonOnClick();
         }
-      }, "Manage Account"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "account-nav-btn"
-      }, "Settings")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "account-sgn-out",
+      }, "Account"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "app-nav-btn"
+      }, "Settings"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "wrap-end",
+        style: {
+          marginTop: "10px"
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "app-nav-btn",
         onClick: function onClick() {
           window.location.href = '/logout';
         }
-      }, "Sign Out")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Sign Out"))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "header-btn-icn",
         onClick: function onClick() {
           window.location.href = '/profile';
@@ -57142,528 +56134,6 @@ var mapStateToProps = function mapStateToProps(state) {
 
 /***/ }),
 
-/***/ "./resources/js/app/items/buttons/SideNavButton.js":
-/*!*********************************************************!*\
-  !*** ./resources/js/app/items/buttons/SideNavButton.js ***!
-  \*********************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! uuid */ "./node_modules/uuid/index.js");
-/* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(uuid__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _actions_appActions_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/appActions.js */ "./resources/js/app/actions/appActions.js");
-/* harmony import */ var _actions_clientActions_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../actions/clientActions.js */ "./resources/js/app/actions/clientActions.js");
-function _typeof(obj) {
-  "@babel/helpers - typeof";
-
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    _typeof = function _typeof(obj) {
-      return typeof obj;
-    };
-  } else {
-    _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-    };
-  }
-
-  return _typeof(obj);
-}
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  return Constructor;
-}
-
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      writable: true,
-      configurable: true
-    }
-  });
-  if (superClass) _setPrototypeOf(subClass, superClass);
-}
-
-function _setPrototypeOf(o, p) {
-  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  };
-
-  return _setPrototypeOf(o, p);
-}
-
-function _createSuper(Derived) {
-  var hasNativeReflectConstruct = _isNativeReflectConstruct();
-
-  return function _createSuperInternal() {
-    var Super = _getPrototypeOf(Derived),
-        result;
-
-    if (hasNativeReflectConstruct) {
-      var NewTarget = _getPrototypeOf(this).constructor;
-
-      result = Reflect.construct(Super, arguments, NewTarget);
-    } else {
-      result = Super.apply(this, arguments);
-    }
-
-    return _possibleConstructorReturn(this, result);
-  };
-}
-
-function _possibleConstructorReturn(self, call) {
-  if (call && (_typeof(call) === "object" || typeof call === "function")) {
-    return call;
-  }
-
-  return _assertThisInitialized(self);
-}
-
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return self;
-}
-
-function _isNativeReflectConstruct() {
-  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
-  if (Reflect.construct.sham) return false;
-  if (typeof Proxy === "function") return true;
-
-  try {
-    Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-
-function _getPrototypeOf(o) {
-  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf(o);
-}
-
-
-
-
-
-
-
-
-var SideNavButton = /*#__PURE__*/function (_Component) {
-  _inherits(SideNavButton, _Component);
-
-  var _super = _createSuper(SideNavButton);
-
-  function SideNavButton(props) {
-    var _this;
-
-    _classCallCheck(this, SideNavButton);
-
-    _this = _super.call(this, props);
-    _this.state = {
-      pageName: _this.props.pageName
-    };
-    return _this;
-  }
-
-  _createClass(SideNavButton, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {}
-  }, {
-    key: "shouldComponentUpdate",
-    value: function shouldComponentUpdate(nextProps, nextState, nextContext) {
-      var cloudPage = this.props.cloudPage;
-
-      if (cloudPage !== nextProps.cloudPage) {
-        return true;
-      }
-
-      return false;
-    }
-  }, {
-    key: "returnToOriginalPageContent",
-    value: function returnToOriginalPageContent() {
-      var pageName = this.props.pageName;
-
-      switch (pageName) {
-        case 'Clients':
-          this.props.toggleClientContentPage("clientSearch");
-          break;
-
-        default:
-          break;
-      }
-
-      return true;
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this2 = this;
-
-      var pageName = this.state.pageName;
-      var cloudPage = this.props.cloudPage;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        key: Object(uuid__WEBPACK_IMPORTED_MODULE_3__["v4"])(),
-        value: pageName,
-        className: cloudPage === pageName ? "side-nav-btn-actv" : "side-nav-btn",
-        onClick: function onClick(event) {
-          _this2.props.navigateCloudPage(event.target.value);
-        },
-        onDoubleClick: function onDoubleClick() {
-          _this2.returnToOriginalPageContent();
-        }
-      }, pageName);
-    }
-  }]);
-
-  return SideNavButton;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-
-SideNavButton.propTypes = {
-  toggleClientContentPage: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.func.isRequired,
-  navigateCloudPage: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.func.isRequired,
-  cloudPage: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string.isRequired
-};
-
-var mapStateToProps = function mapStateToProps(state) {
-  return {
-    cloudPage: state.app.cloudPage
-  };
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {
-  navigateCloudPage: _actions_appActions_js__WEBPACK_IMPORTED_MODULE_4__["navigateCloudPage"],
-  toggleClientContentPage: _actions_clientActions_js__WEBPACK_IMPORTED_MODULE_5__["toggleClientContentPage"]
-})(SideNavButton));
-
-/***/ }),
-
-/***/ "./resources/js/app/pages/AccountPage.js":
-/*!***********************************************!*\
-  !*** ./resources/js/app/pages/AccountPage.js ***!
-  \***********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! uuid */ "./node_modules/uuid/index.js");
-/* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(uuid__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _actions_appActions_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../actions/appActions.js */ "./resources/js/app/actions/appActions.js");
-/* harmony import */ var _actions_userActions_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../actions/userActions.js */ "./resources/js/app/actions/userActions.js");
-/* harmony import */ var _public_images_user_circle_solid_svg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../public/images/user-circle-solid.svg */ "./public/images/user-circle-solid.svg");
-/* harmony import */ var _public_images_user_circle_solid_svg__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_public_images_user_circle_solid_svg__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _components_AccountPageNavigation_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/AccountPageNavigation.js */ "./resources/js/app/components/AccountPageNavigation.js");
-/* harmony import */ var _components_AccountContentSectionNavigation_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/AccountContentSectionNavigation.js */ "./resources/js/app/components/AccountContentSectionNavigation.js");
-function _typeof(obj) {
-  "@babel/helpers - typeof";
-
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    _typeof = function _typeof(obj) {
-      return typeof obj;
-    };
-  } else {
-    _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-    };
-  }
-
-  return _typeof(obj);
-}
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  return Constructor;
-}
-
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      writable: true,
-      configurable: true
-    }
-  });
-  if (superClass) _setPrototypeOf(subClass, superClass);
-}
-
-function _setPrototypeOf(o, p) {
-  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  };
-
-  return _setPrototypeOf(o, p);
-}
-
-function _createSuper(Derived) {
-  var hasNativeReflectConstruct = _isNativeReflectConstruct();
-
-  return function _createSuperInternal() {
-    var Super = _getPrototypeOf(Derived),
-        result;
-
-    if (hasNativeReflectConstruct) {
-      var NewTarget = _getPrototypeOf(this).constructor;
-
-      result = Reflect.construct(Super, arguments, NewTarget);
-    } else {
-      result = Super.apply(this, arguments);
-    }
-
-    return _possibleConstructorReturn(this, result);
-  };
-}
-
-function _possibleConstructorReturn(self, call) {
-  if (call && (_typeof(call) === "object" || typeof call === "function")) {
-    return call;
-  }
-
-  return _assertThisInitialized(self);
-}
-
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return self;
-}
-
-function _isNativeReflectConstruct() {
-  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
-  if (Reflect.construct.sham) return false;
-  if (typeof Proxy === "function") return true;
-
-  try {
-    Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-
-function _getPrototypeOf(o) {
-  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf(o);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-var AccountPage = /*#__PURE__*/function (_Component) {
-  _inherits(AccountPage, _Component);
-
-  var _super = _createSuper(AccountPage);
-
-  function AccountPage(props) {
-    var _this;
-
-    _classCallCheck(this, AccountPage);
-
-    _this = _super.call(this, props);
-    _this.state = {};
-    return _this;
-  }
-
-  _createClass(AccountPage, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      console.log('AccountPage componentDidMount');
-    }
-  }, {
-    key: "shouldComponentUpdate",
-    value: function shouldComponentUpdate(nextProps, nextState, nextContext) {
-      var _this$props = this.props,
-          sessionData = _this$props.sessionData,
-          accountPage = _this$props.accountPage,
-          accountPageSection = _this$props.accountPageSection;
-
-      if (sessionData !== nextProps.sessionData || accountPage !== nextProps.accountPage || accountPageSection !== nextProps.accountPageSection) {
-        return true;
-      }
-
-      return false;
-    }
-  }, {
-    key: "displayCompanyLinkName",
-    value: function displayCompanyLinkName() {
-      var _this2 = this;
-
-      var sessionData = this.props.sessionData;
-
-      if (Object.keys(sessionData).length !== 0) {
-        if (sessionData.company_name) {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-            className: "prf-comp-nme-p",
-            onClick: function onClick() {
-              _this2.goToCompany();
-            }
-          }, sessionData.company_name);
-        } else {
-          this.props.getCompanyLinkName();
-        }
-      } else {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "lds-default lds-default-sml"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "spinner-load-p"
-        }, "loading"));
-      }
-    }
-  }, {
-    key: "goToCompany",
-    value: function goToCompany() {
-      this.props.navigateAppPage("cloud");
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this$props2 = this.props,
-          sessionData = _this$props2.sessionData,
-          accountPageSection = _this$props2.accountPageSection;
-
-      if (Object.keys(sessionData).length === 0) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "lds-default"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "spinner-load-p"
-        }, "loading"));
-      } else {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "content-wrap algn-cntr"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "profile-page-content"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "content-wrap wrap-space-between profile-body-section"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "wrap-start"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: _public_images_user_circle_solid_svg__WEBPACK_IMPORTED_MODULE_6___default.a,
-          alt: "profile image",
-          height: "120px"
-        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "container algn-top"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-          className: "prf-dtl-p"
-        }, sessionData.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "prf-dtl-p"
-        }, sessionData.job_title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.displayCompanyLinkName()))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_AccountPageNavigation_js__WEBPACK_IMPORTED_MODULE_7__["default"], {
-          key: Object(uuid__WEBPACK_IMPORTED_MODULE_3__["v4"])()
-        }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "profile-body-section"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "accnt-pg-nav"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_AccountContentSectionNavigation_js__WEBPACK_IMPORTED_MODULE_8__["default"], {
-          key: Object(uuid__WEBPACK_IMPORTED_MODULE_3__["v4"])()
-        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "accnt-bdy-sec-cnt"
-        }, accountPageSection))));
-      }
-    }
-  }]);
-
-  return AccountPage;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-
-AccountPage.propTypes = {
-  fetchSessionData: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.func.isRequired,
-  navigateAppPage: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.func.isRequired,
-  getCompanyLinkName: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.func.isRequired,
-  sessionData: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.object.isRequired,
-  accountPage: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string.isRequired,
-  accountPageSection: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string.isRequired
-};
-
-var mapStateToProps = function mapStateToProps(state) {
-  return {
-    sessionData: state.user.sessionData,
-    accountPage: state.account.accountPage,
-    accountPageSection: state.account.accountPageSection
-  };
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {
-  navigateAppPage: _actions_appActions_js__WEBPACK_IMPORTED_MODULE_4__["navigateAppPage"],
-  fetchSessionData: _actions_userActions_js__WEBPACK_IMPORTED_MODULE_5__["fetchSessionData"],
-  getCompanyLinkName: _actions_userActions_js__WEBPACK_IMPORTED_MODULE_5__["getCompanyLinkName"]
-})(AccountPage));
-
-/***/ }),
-
 /***/ "./resources/js/app/pages/CloudPage.js":
 /*!*********************************************!*\
   !*** ./resources/js/app/pages/CloudPage.js ***!
@@ -57858,6 +56328,195 @@ var mapStateToProps = function mapStateToProps(state) {
   navigateAppPage: _actions_appActions_js__WEBPACK_IMPORTED_MODULE_4__["navigateAppPage"],
   fetchSessionData: _actions_userActions_js__WEBPACK_IMPORTED_MODULE_5__["fetchSessionData"]
 })(CloudPage));
+
+/***/ }),
+
+/***/ "./resources/js/app/pages/CompanySignUpPage.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/app/pages/CompanySignUpPage.js ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! uuid */ "./node_modules/uuid/index.js");
+/* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(uuid__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _actions_appActions_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../actions/appActions.js */ "./resources/js/app/actions/appActions.js");
+function _typeof(obj) {
+  "@babel/helpers - typeof";
+
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    _typeof = function _typeof(obj) {
+      return typeof obj;
+    };
+  } else {
+    _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
+
+  return _typeof(obj);
+}
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) _setPrototypeOf(subClass, superClass);
+}
+
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+
+function _createSuper(Derived) {
+  var hasNativeReflectConstruct = _isNativeReflectConstruct();
+
+  return function _createSuperInternal() {
+    var Super = _getPrototypeOf(Derived),
+        result;
+
+    if (hasNativeReflectConstruct) {
+      var NewTarget = _getPrototypeOf(this).constructor;
+
+      result = Reflect.construct(Super, arguments, NewTarget);
+    } else {
+      result = Super.apply(this, arguments);
+    }
+
+    return _possibleConstructorReturn(this, result);
+  };
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof(call) === "object" || typeof call === "function")) {
+    return call;
+  }
+
+  return _assertThisInitialized(self);
+}
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+function _isNativeReflectConstruct() {
+  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
+  if (Reflect.construct.sham) return false;
+  if (typeof Proxy === "function") return true;
+
+  try {
+    Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
+
+
+
+
+
+
+
+var CompanySignUpPage = /*#__PURE__*/function (_Component) {
+  _inherits(CompanySignUpPage, _Component);
+
+  var _super = _createSuper(CompanySignUpPage);
+
+  function CompanySignUpPage(props) {
+    var _this;
+
+    _classCallCheck(this, CompanySignUpPage);
+
+    _this = _super.call(this, props);
+    _this.state = {};
+    return _this;
+  }
+
+  _createClass(CompanySignUpPage, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      console.log('CompanySignUpPage componentDidMount');
+    }
+  }, {
+    key: "shouldComponentUpdate",
+    value: function shouldComponentUpdate(nextProps, nextState, nextContext) {
+      return false;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "content-wrap wrap-start"
+      }, "company sign up page");
+    }
+  }]);
+
+  return CompanySignUpPage;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+CompanySignUpPage.propTypes = {};
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {};
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {
+  navigateAppPage: _actions_appActions_js__WEBPACK_IMPORTED_MODULE_4__["navigateAppPage"]
+})(CompanySignUpPage));
 
 /***/ }),
 
@@ -58252,6 +56911,286 @@ var mapStateToProps = function mapStateToProps(state) {
   navigateAppPage: _actions_appActions_js__WEBPACK_IMPORTED_MODULE_4__["navigateAppPage"],
   fetchSessionData: _actions_userActions_js__WEBPACK_IMPORTED_MODULE_5__["fetchSessionData"]
 })(NotificationsPage));
+
+/***/ }),
+
+/***/ "./resources/js/app/pages/PendingCloudPage.js":
+/*!****************************************************!*\
+  !*** ./resources/js/app/pages/PendingCloudPage.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! uuid */ "./node_modules/uuid/index.js");
+/* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(uuid__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _actions_appActions_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../actions/appActions.js */ "./resources/js/app/actions/appActions.js");
+/* harmony import */ var _actions_userActions_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../actions/userActions.js */ "./resources/js/app/actions/userActions.js");
+function _typeof(obj) {
+  "@babel/helpers - typeof";
+
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    _typeof = function _typeof(obj) {
+      return typeof obj;
+    };
+  } else {
+    _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
+
+  return _typeof(obj);
+}
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) _setPrototypeOf(subClass, superClass);
+}
+
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+
+function _createSuper(Derived) {
+  var hasNativeReflectConstruct = _isNativeReflectConstruct();
+
+  return function _createSuperInternal() {
+    var Super = _getPrototypeOf(Derived),
+        result;
+
+    if (hasNativeReflectConstruct) {
+      var NewTarget = _getPrototypeOf(this).constructor;
+
+      result = Reflect.construct(Super, arguments, NewTarget);
+    } else {
+      result = Super.apply(this, arguments);
+    }
+
+    return _possibleConstructorReturn(this, result);
+  };
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof(call) === "object" || typeof call === "function")) {
+    return call;
+  }
+
+  return _assertThisInitialized(self);
+}
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+function _isNativeReflectConstruct() {
+  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
+  if (Reflect.construct.sham) return false;
+  if (typeof Proxy === "function") return true;
+
+  try {
+    Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
+
+
+
+
+
+
+
+
+var PendingCloudPage = /*#__PURE__*/function (_Component) {
+  _inherits(PendingCloudPage, _Component);
+
+  var _super = _createSuper(PendingCloudPage);
+
+  function PendingCloudPage(props) {
+    var _this;
+
+    _classCallCheck(this, PendingCloudPage);
+
+    _this = _super.call(this, props);
+    _this.state = {};
+    return _this;
+  }
+
+  _createClass(PendingCloudPage, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      console.log('CompanySignUpPage componentDidMount');
+      this.props.getUsersCompanyCloudInvitations();
+    }
+  }, {
+    key: "shouldComponentUpdate",
+    value: function shouldComponentUpdate(nextProps, nextState, nextContext) {
+      var cloudInvitations = this.props.cloudInvitations;
+
+      if (cloudInvitations !== nextProps.cloudInvitations) {
+        return true;
+      }
+
+      return false;
+    }
+  }, {
+    key: "displayPendingCompanyCloudInvitations",
+    value: function displayPendingCompanyCloudInvitations() {
+      var _this2 = this;
+
+      var cloudInvitations = this.props.cloudInvitations;
+      var invitationDisplay = cloudInvitations.map(function (inv) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+          key: Object(uuid__WEBPACK_IMPORTED_MODULE_3__["v4"])()
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, inv.company.company_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, inv.invited_by), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, inv.created_at), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "blubtn cld-invt-btns",
+          onClick: function onClick(event) {
+            _this2.acceptCompanyCloudInvite(event);
+          }
+        }, "Accept")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "redbtn cld-invt-btns",
+          invitation_id: inv.id,
+          invitation_key: inv.invitation_key,
+          onClick: function onClick(event) {
+            _this2.declineCompanyCloudInvite(event);
+          }
+        }, "Decline")));
+      });
+      return invitationDisplay;
+    }
+  }, {
+    key: "declineCompanyCloudInvite",
+    value: function declineCompanyCloudInvite(event) {
+      var inv_id = event.target.getAttribute("invitation_id");
+      var inv_key = event.target.getAttribute("invitation_key");
+    }
+  }, {
+    key: "acceptCompanyCloudInvite",
+    value: function acceptCompanyCloudInvite(event) {
+      var inv_id = event.target.getAttribute("invitation_id");
+      var inv_key = event.target.getAttribute("invitation_key");
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "content-wrap wrap-start"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "content"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        style: {
+          marginTop: "40px",
+          maxWidth: "800px",
+          color: "#1770E2",
+          fontWeight: "600",
+          lineHeight: "1.4",
+          letterSpacing: "3px"
+        }
+      }, "You are not yet connected to a company cloud."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        style: {
+          fontSize: "21px",
+          marginTop: "25px"
+        }
+      }, "Please get started by creating a company cloud below or accepting an invitation."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        style: {
+          marginTop: "20px",
+          fontWeight: "lighter"
+        }
+      }, "Your account can only be attached to one company cloud at any one time. Dont create a cloud if your awaiting an invitation. "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        style: {
+          fontSize: "11px",
+          marginTop: "20px",
+          marginBottom: "10px",
+          fontWeight: "lighter"
+        }
+      }, "pending invitations below"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: {
+          width: "600px",
+          height: "150px",
+          overflowY: "scroll"
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Company"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "From"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Invitation Sent"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.displayPendingCompanyCloudInvitations()))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "excite-act-btn",
+        style: {
+          marginTop: "40px"
+        }
+      }, "Create Your Cloud")));
+    }
+  }]);
+
+  return PendingCloudPage;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+PendingCloudPage.propTypes = {
+  getUsersCompanyCloudInvitations: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.func.isRequired,
+  cloudInvitations: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.array.isRequired
+};
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    cloudInvitations: state.user.cloudInvitations
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {
+  navigateAppPage: _actions_appActions_js__WEBPACK_IMPORTED_MODULE_4__["navigateAppPage"],
+  getUsersCompanyCloudInvitations: _actions_userActions_js__WEBPACK_IMPORTED_MODULE_5__["getUsersCompanyCloudInvitations"]
+})(PendingCloudPage));
 
 /***/ }),
 
@@ -58692,7 +57631,8 @@ function _defineProperty(obj, key, value) {
 
 
 var initialState = {
-  sessionData: {}
+  sessionData: {},
+  cloudInvitations: []
 };
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
@@ -58710,6 +57650,12 @@ var initialState = {
         sessionData: _objectSpread(_objectSpread({}, state.sessionData), {}, {
           company_name: action.payload
         })
+      });
+      break;
+
+    case 'FETCH_USERS_CLOUD_INVITATIONS':
+      return _objectSpread(_objectSpread({}, state), {}, {
+        cloudInvitations: action.payload
       });
       break;
 

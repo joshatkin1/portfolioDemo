@@ -4,7 +4,7 @@ import {
 
 export const fetchSessionData = () => dispatch => {
 
-    axios({ method: 'GET', url: '/resources/app/data/session/all', validateStatus: () => true })
+     axios({ method: 'GET', url: 'api/resources/data/session/all', validateStatus: () => true })
         .then( response => {
 
                 if(response.status === 200){

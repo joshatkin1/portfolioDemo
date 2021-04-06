@@ -12,6 +12,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <meta http-equiv="Cache-Control" content="max-age=7200, public" />
     <meta name="Cache-Control" content="max-age=7200, public"/>
+    <meta name="X-Content-Type-Options" content="nosniff"/>
+    <meta name="X-XSS-Protection" content="1; mode=block">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 

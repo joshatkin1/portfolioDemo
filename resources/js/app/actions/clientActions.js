@@ -16,7 +16,7 @@ export const toggleClientContentPage = (page) => dispatch => {
 
 export const submitCreateClientForm = (data) => dispatch => {
 
-    axios.post('/resources/clients/create/',data)
+    axios.post('api/resources/clients/create/',data)
         .then(response => {
             dispatch({
                 type: CURRENT_CLIENT_DETAILS,
@@ -35,7 +35,7 @@ export const submitCreateClientForm = (data) => dispatch => {
 
 export const updateClientSearchOptions = (search) => dispatch => {
 
-    axios.get('/resources/clients/search?search_value=' + search)
+    axios.get('api/resources/clients/search?search_value=' + search)
         .then(response => {
             dispatch({
                 type: SET_CLIENT_SEARCH_OPTIONS,
@@ -60,7 +60,7 @@ export const setCurrentClientAccountDetails = (currentClient) => dispatch => {
 
 export const paginateClientSearchAll = (search, clientSearchPage) => dispatch => {
 
-    axios.get('/resources/clients/search/all/paginate?search_value=' + search + '&page=' + clientSearchPage)
+    axios.get('api/resources/clients/search/all/paginate?search_value=' + search + '&page=' + clientSearchPage)
         .then(response => {
             dispatch({
                 type: SET_CLIENT_SEARCH_PAGINATION_OPTIONS,

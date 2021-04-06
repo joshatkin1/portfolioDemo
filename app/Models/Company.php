@@ -18,6 +18,8 @@ class Company extends Model
     protected $primaryKey = 'company_id';
     public static $staticMakeHidden;
 
+    protected $guarded = [];
+
     /**
      * The attributes that are mass assignable.
      *
@@ -40,6 +42,7 @@ class Company extends Model
      * @var array
      */
     protected $hidden = [
+        'password',
         'subscription_cost',
     ];
 

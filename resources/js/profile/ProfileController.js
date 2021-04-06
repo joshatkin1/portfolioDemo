@@ -10,22 +10,45 @@ class ProfileController extends Component{
         super(props);
 
         this.state = {
+            firstTimeLoad:1,
+            pageLoaded: true,
         }
     }
 
     componentDidMount() {
         console.log('ProfileController componentDidMount');
-        this.props.fetchSessionData();
+        this.startMockPageLoading();
+        this.loadControllerData();
     }
 
     shouldComponentUpdate(nextProps, nextState, nextContext) {
+        var {pageLoaded} = this.state;
         var {profilePage} = this.props;
 
-        if(profilePage !== nextProps.profilePage){
+        if(pageLoaded !== nextState.pageLoaded
+           || profilePage !== nextProps.profilePage){
             return true;
         }
 
         return false;
+    }
+
+    startMockPageLoading(){
+        var {pageLoaded,firstTimeLoad} = this.state;
+        var timeoutVal = 2000;
+        switch (firstTimeLoad) {
+            case 1:timeoutVal = 3000;break;
+            case 0:timeoutVal = 1500;break;
+        }
+        const pageLoading = setTimeout(() => {
+            this.setState({pageLoaded:true});
+        }, timeoutVal);
+        return () => clearTimeout(pageLoading);
+        this.setState({firstTimeLoad: 0 });
+    }
+
+    loadControllerData(){
+        this.props.fetchSessionData();
     }
 
     displayAppPage(){
@@ -39,17 +62,30 @@ class ProfileController extends Component{
     }
 
     render(){
+        var {pageLoaded} = this.state;
         return (
-            <div className={"content-wrap algn-cntr"}>
-                <div className={"outr-header-bar content-wrap algn-cntr"}>
-                    <HeaderComponent key={v4()} />
-                </div>
-                <div className={"inr-content body-content-wrap algn-cntr"}>
-                    <div className={"content-wrap"} style={{justifyContent:"stretch"}}>
-                        {/*{this.displayAppPage()}*/}
-                    </div>
-                </div>
-            </div>
+            <>
+                {
+                    pageLoaded ?
+                        <div className={"content-wrap algn-cntr"}>
+                            <div className={"outr-header-bar content-wrap algn-cntr"}>
+                                <HeaderComponent key={v4()} />
+                            </div>
+                            <div className={"inr-content body-content-wrap algn-cntr"}>
+                                <div className={"content-wrap"} style={{justifyContent:"stretch"}}>
+                                    {/*{this.displayAppPage()}*/}
+                                </div>
+                            </div>
+                        </div>
+                    :
+                        <div className={"content-wrap algn-cntr loading-page-dv"}>
+                            <h4 className="webtitle">workcloud</h4>
+                            <div className={"page-loading-bar"}>
+                                <div className={"page-loading-bar-inr"}></div>
+                            </div>
+                        </div>
+                }
+            </>
         );
     }
 }

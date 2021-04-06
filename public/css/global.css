@@ -3,7 +3,7 @@
 *{
     margin:0;
     padding:0;
-    font-family: sans-serif;
+    font-family:'Lato', sans-serif;
 }
 body{
     margin:0px;
@@ -70,6 +70,10 @@ label {
 button {
     border-radius: 0;
     white-space: nowrap;
+    -webkit-transition: background-color 1s ease-in;
+    -moz-transition: background-color 1s ease-in;
+    -o-transition: background-color 1s ease-in;
+    transition: background-color 1s ease-in;
 }
 input,
 button,
@@ -331,6 +335,12 @@ textarea {
     width:calc(98% - 8px);
     padding:7px 4px;
 }
+.inr-content{
+    width:96%;
+    max-width:1200px;
+    padding-left:2%;
+    padding-right: 2%;
+}
 .nav-bar{
     width:100%;
     height:26px;
@@ -452,56 +462,53 @@ textarea {
 .header-btn-icn:hover{
     background-color: rgb(240,240,240);
 }
-.account-nav-bar{
+.app-nav-bar{
     position: absolute;
-    width:200px;
+    width:345px;
     box-shadow: rgb(240,240,240) 0px 2px 2px 1px;
     border: solid 1px lightgray;
+    padding:10px;
     background-color:rgb(252,252,252);
     top:60px;
-    left:calc(100% - 220px);
+    left:calc(100% - 400px);
     border-radius:3px;
-    height:300px;
-    padding-bottom:10px;
+    height:400px;
     overflow: hidden;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    align-items: flex-start;
+    justify-content: flex-start;
+    overflow-y: scroll;
+    -ms-overflow-y: scroll;
+    overflow-x: hidden;
+    -ms-overflow-x: hidden;
 }
-.account-nav-bar > div > .account-nav-btn{
-    width:100%;
+.app-nav-btn{
+    width:95px;
+    height: 80px;
     border: none;
-    border-bottom:solid 1px rgb(230,230,230);
     background-color: transparent;
     color:rgb(130,130,130);
     font-weight:400;
-    padding:10px 0px;
+    padding:10px;
     font-size:15px;
     letter-spacing:1px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    cursor: pointer;
+    border-radius:20px;
 }
-.account-nav-bar > div > .account-nav-btn:hover{
+.app-nav-btn:hover{
     background-color: rgb(248,248,248);
     color: #1770E2;
 }
-.account-nav-bar > div > .account-nav-btn:active{
+.app-nav-btn:active{
     background-color: rgb(248,248,248);
-    color: #1770E2;
-}
-.account-nav-bar > .account-sgn-out{
-    width:100px;
-    border:solid 1px rgb(230,230,230);
-    border-radius:5px;
-    padding:8px 5px;
-    font-size:15px;
-    letter-spacing:1px;
-    color:rgb(130,130,130);
-    background-color:transparent;
-}
-.account-nav-bar > .account-sgn-out:hover{
-    background-color: rgb(248,248,248);
-    border-color: #1770E2;
-    color: #1770E2;
-}
-.account-nav-bar > .account-sgn-out:active{
-    background-color: rgb(248,248,248);
-    border-color: #1770E2;
     color: #1770E2;
 }
 .acnt-nav-comp-sec{
@@ -1170,6 +1177,21 @@ button:hover
     max-width:250px;
     font-size:14px;
 }
+.excite-act-btn{
+    width:100%;
+    max-width:450px;
+    font-size:19px;
+    letter-spacing:1.5px;
+    padding:13px 0px;
+    border-radius:30px;
+    background-image: linear-gradient(180deg,#0087FF,#1770E2);
+    color:white;
+    border:solid 2px #1770E2;
+}
+.excite-act-btn:hover{
+    background-image: linear-gradient(200deg,#0087FF,#0087FF);
+    border-color: #0087FF;
+}
 .graybtn{
     color:gray;
     border:solid 1px rgb(200,200,200);
@@ -1510,18 +1532,14 @@ hr
 {
     background-color:#1770E2;
     color:white;
-    font-family:'Lato',sans-serif;
+    font-family:'Helvetica Neue','Lato',sans-serif;
     font-weight: bolder;
     border:solid 1px rgb(220,220,220);
     border-radius:3px;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
 }
 .blubtn:hover
 {
-    -webkit-transition: background-color 0.15s ease-in-out;
-    -moz-transition: background-color 0.15s ease-in-out;
-    -o-transition: background-color 0.15s ease-in-out;
-    transition: background-color 0.15s ease-in-out;
     background-color:#0087FF;
     color:white;
 }
@@ -1580,16 +1598,17 @@ hr
     background-color:white;
     border:solid 1px rgb(170,10,40);
     color:rgb(170,10,40);
-    font-family:'Lato', sans-serif;
+    font-family:'Helvetica Neue','Lato',sans-serif;
     border-radius:2px;
-    letter-spacing:1.5px;
+    letter-spacing:0.5px;
 }
 .redbtn:hover{
     border:solid 1px rgb(210,10,40);
     color:rgb(210,10,40);
 }
 .redbtn:active{
-    background-color:rgb(250,250,250);
+    background-color:rgb(170,10,40);
+    color:white;
 }
 #crmsearchinpt
 {
@@ -1893,10 +1912,10 @@ hr
     width:100%;
     text-align: left;
     font-family: 'Lato', sans-serif;
-    font-weight: 500;
+    font-weight: 400;
     color:rgb(70,70,70);
-    font-size:15px;
-    padding-bottom:6px;
+    font-size:14px;
+    padding-bottom:4px;
     letter-spacing:1px;
 }
 .lrg-inpt, .lrg-slct{
@@ -3721,4 +3740,34 @@ hr
     letter-spacing:0px;
     flex-wrap: nowrap;
     color:#929292;
+}
+.loading-page-dv{
+    height: 80vh;
+    justify-content: center;
+}
+.page-loading-bar{
+    background-color: #dddddd;
+    width:200px;
+    height:4px;
+    margin-top:40px;
+    border-radius:2px;
+    overflow: hidden;
+}
+.page-loading-bar-inr{
+    background-image: linear-gradient(50deg, #1770E2, #2181EE);
+    width:0px;
+    height:4px;
+    transition: 0.4s linear;
+    transition-property: width;
+    animation: pge-ldr-bar 2.5s infinite;
+    z-index:1px;
+}
+@keyframes pge-ldr-bar {
+    0% { width:0%; }
+    50% {width:100%;}
+    100% {width:0%;}
+}
+.cld-invt-btns{
+    font-size:13px;
+    padding:5px;
 }

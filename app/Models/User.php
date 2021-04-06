@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Company;
 use Laravel\Passport\HasApiTokens;
@@ -43,6 +44,11 @@ class User extends Authenticatable implements JWTSubject
         'verified_device_keys' => 'array',
     ];
 
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+    }
+
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *
@@ -61,11 +67,21 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'email' => $this->email,
+            'job_title' => $this->job_title,
+            'company_link' => $this->company_link,
         ];
     }
 
     public function company()
     {
         return $this->hasOne('App\Models\Company', 'company_link', 'company_id');
+    }
+
+    public function cloudInvitations()
+    {
+        return $this->hasMany('App\Models\CloudInvitations', 'user_id', 'id');
     }
 }

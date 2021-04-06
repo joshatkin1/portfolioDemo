@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\App;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 
 class AppController extends Controller
 {
@@ -15,12 +17,12 @@ class AppController extends Controller
     public function __construct()
     {
         $this->middleware('masterAuth')->only('appView');
+        $this->middleware('auth:api')->except('appView');
 
-//        //VERIFY USER DEVICE IS EXPECTED CURRENT DEVICE
-//        $num = random_int(1,2);
-//        if($num === 2){
-//            $this->middleware('multiUserCheck');
-//        }
+        $randNum = random_int(1,6);
+        if($randNum === 6){
+            $this->middleware('userAgentCheck');
+        }
     }
 
     /**
@@ -28,7 +30,7 @@ class AppController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function appView()
+    public function appView(Request $req)
     {
         return view('app');
     }

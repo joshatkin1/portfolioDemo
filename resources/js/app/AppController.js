@@ -7,35 +7,55 @@ import {fetchSessionData} from './actions/userActions.js';
 
 //MAJOR CONTROLLER COMPONENTS
 import HeaderComponent from './components/header/HeaderComponent.js';
-import SideNav from "./components/SideNav";
-import AccountPage from "./pages/AccountPage";
-import NotificationsPage from "./pages/NotificationsPage";
-import MessagesPage from "./pages/MessagesPage";
-import CloudPage from "./pages/CloudPage";
-import {CURRENT_CLIENT_DETAILS, TOGGLE_CLIENT_PAGE_SECTION} from "./actions/actionTypes";
+import NotificationsPage from "./pages/NotificationsPage.js";
+import MessagesPage from "./pages/MessagesPage.js";
+import CloudPage from "./pages/CloudPage.js";
+import CompanySignUpComponent from './pages/CompanySignUpPage.js';
+import PendingCloudPage from './pages/PendingCloudPage.js';
 
 class AppController extends Component{
     constructor(props){
         super(props);
 
         this.state = {
+            firstTimeLoad:1,
+            pageLoaded: true,
+            signingUpCompany: false,
         }
     }
 
     componentDidMount() {
         console.log('AppController componentDidMount');
+        this.startMockPageLoading();
         this.props.fetchSessionData();
     }
 
     shouldComponentUpdate(nextProps, nextState, nextContext) {
+        var {pageLoaded, signingUpCompany} = this.state;
         var {appPage, cloudPage} = this.props;
 
-        if(appPage !== nextProps.appPage
-        || cloudPage !== nextProps.cloudPage){
+        if(pageLoaded !== nextState.pageLoaded
+            || appPage !== nextProps.appPage
+            || cloudPage !== nextProps.cloudPage
+        || signingUpCompany !== nextState.signingUpCompany){
             return true;
         }
 
         return false;
+    }
+
+    startMockPageLoading(){
+        var {pageLoaded,firstTimeLoad} = this.state;
+        var timeoutVal = 2000;
+        switch (firstTimeLoad) {
+            case 1:timeoutVal = 3000;break;
+            case 0:timeoutVal = 1500;break;
+        }
+        const pageLoading = setTimeout(() => {
+            this.setState({pageLoaded:true});
+        }, timeoutVal);
+        return () => clearTimeout(pageLoading);
+        this.setState({firstTimeLoad: 0 });
     }
 
     displayAppPage(){
@@ -49,17 +69,51 @@ class AppController extends Component{
     }
 
     render(){
+        var {sessionData} = this.props;
+        var {pageLoaded, signingUpCompany} = this.state;
+
         return (
-                <div className={"content-wrap algn-cntr"}>
-                    <div className={"outr-header-bar content-wrap algn-cntr"}>
-                        <HeaderComponent key={v4()}/>
-                    </div>
-                    <div className={"inr-content body-content-wrap algn-cntr"}>
-                            <div className={"content-wrap"} style={{justifyContent:"stretch"}}>
-                                {this.displayAppPage()}
+            <>
+                {
+                    pageLoaded ?
+                        <>
+                            {sessionData.company_link == null ?
+                                <div className={"content-wrap algn-cntr"}>
+                                    <div className={"outr-header-bar content-wrap algn-cntr"}>
+                                        <HeaderComponent key={v4()}/>
+                                    </div>
+                                    <div className={"inr-content body-content-wrap algn-cntr"}>
+                                        <>
+                                            {signingUpCompany ?
+                                                <CompanySignUpComponent key={v4()}/>
+                                                :
+                                                <PendingCloudPage key={v4()}/>
+                                            }
+                                        </>
+                                    </div>
+                                </div>
+                                :
+                                <div className={"content-wrap algn-cntr"}>
+                                    <div className={"outr-header-bar content-wrap algn-cntr"}>
+                                        <HeaderComponent key={v4()}/>
+                                    </div>
+                                    <div className={"inr-content body-content-wrap algn-cntr"}>
+                                        <div className={"content-wrap"}>
+                                            {this.displayAppPage()}
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </>
+                        :
+                        <div className={"content-wrap algn-cntr loading-page-dv"}>
+                            <h4 className="webtitle">workcloud</h4>
+                            <div className={"page-loading-bar"}>
+                                <div className={"page-loading-bar-inr"}></div>
                             </div>
-                    </div>
-                </div>
+                        </div>
+                }
+                </>
         );
     }
 }
