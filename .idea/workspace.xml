@@ -125,6 +125,7 @@
       <change afterPath="$PROJECT_DIR$/../softsync/.idea/masterplan.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../softsync/resources/js/actions/appActions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -362,7 +363,7 @@
       <workItem from="1617629419540" duration="1631000" />
       <workItem from="1617656861800" duration="520000" />
       <workItem from="1617723930133" duration="10693000" />
-      <workItem from="1617803982100" duration="342000" />
+      <workItem from="1617803982100" duration="770000" />
     </task>
     <servers />
   </component>
