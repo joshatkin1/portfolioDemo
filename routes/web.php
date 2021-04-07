@@ -29,3 +29,4 @@ Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'profileV
 
 
 Route::get('/saaa', [App\Http\Controllers\ProfileController::class, 'profileView'])->name('profile');
+Route::get('/saaa', [App\Http\Controllers\ProfileController::class, 'profileView'])->name('profile');
