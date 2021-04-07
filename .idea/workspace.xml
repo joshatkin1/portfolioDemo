@@ -125,7 +125,7 @@
       <change afterPath="$PROJECT_DIR$/../softsync/.idea/masterplan.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../softsync/resources/js/actions/appActions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -362,7 +362,7 @@
       <workItem from="1617629419540" duration="1631000" />
       <workItem from="1617656861800" duration="520000" />
       <workItem from="1617723930133" duration="10693000" />
-      <workItem from="1617803982100" duration="8000" />
+      <workItem from="1617803982100" duration="342000" />
     </task>
     <servers />
   </component>
@@ -417,6 +417,14 @@
       <screen x="0" y="25" width="1440" height="780" />
     </state>
     <state x="741" y="342" key="NewPhpFileDialog/0.25.1440.780@0.25.1440.780" timestamp="1615369445212" />
+    <state width="648" height="445" key="SwitcherDM" timestamp="1617804023488">
+      <screen x="0" y="25" width="1440" height="776" />
+    </state>
+    <state width="648" height="445" key="SwitcherDM/0.25.1440.776@0.25.1440.776" timestamp="1617804023488" />
+    <state x="419" y="331" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1617804007608">
+      <screen x="0" y="25" width="1440" height="776" />
+    </state>
+    <state x="419" y="331" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.25.1440.776@0.25.1440.776" timestamp="1617804007608" />
     <state x="385" y="128" width="670" height="673" key="search.everywhere.popup" timestamp="1617730672381">
       <screen x="0" y="25" width="1440" height="776" />
     </state>

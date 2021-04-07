@@ -26,3 +26,6 @@ Route::prefix('resources')->group(function () {
 
 Route::get('/app', [App\Http\Controllers\AppController::class, 'appView'])->name('app');
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'profileView'])->name('profile');
+
+
+Route::get('/sss', [App\Http\Controllers\ProfileController::class, 'profileView'])->name('profile');
