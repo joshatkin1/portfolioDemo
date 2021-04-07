@@ -28,4 +28,4 @@ Route::get('/app', [App\Http\Controllers\AppController::class, 'appView'])->name
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'profileView'])->name('profile');
 
 
-Route::get('/GITTEST', [App\Http\Controllers\ProfileController::class, 'profileView'])->name('profile');
+Route::get('/sss', [App\Http\Controllers\ProfileController::class, 'profileView'])->name('profile');
