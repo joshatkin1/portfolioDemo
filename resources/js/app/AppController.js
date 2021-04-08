@@ -68,6 +68,10 @@ class AppController extends Component{
         }
     }
 
+    toggleCloudSignUp(toggle){
+        this.setState({signingUpCompany: toggle});
+    }
+
     render(){
         var {sessionData} = this.props;
         var {pageLoaded, signingUpCompany} = this.state;
@@ -85,9 +89,9 @@ class AppController extends Component{
                                     <div className={"inr-content body-content-wrap algn-cntr"}>
                                         <>
                                             {signingUpCompany ?
-                                                <CompanySignUpComponent key={v4()}/>
+                                                <CompanySignUpComponent key={v4()} toggleCloudSignUp={(toggle)=>{this.toggleCloudSignUp(toggle)}}/>
                                                 :
-                                                <PendingCloudPage key={v4()}/>
+                                                <PendingCloudPage key={v4()} toggleCloudSignUp={(toggle)=>{this.toggleCloudSignUp(toggle)}}/>
                                             }
                                         </>
                                     </div>

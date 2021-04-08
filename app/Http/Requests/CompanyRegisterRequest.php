@@ -25,9 +25,10 @@ class CompanyRegisterRequest extends FormRequest
     {
 
         return [
-            'company_name' => 'required|min:1|max:255',
-            'company_industry' => 'required|max:255',
+            'company_name' => 'required|string|min:1|max:255',
+            'company_industry' => 'required|string|max:255',
             'company_email' => 'required|email',
+            'company_telephone' => 'required|max:255',
         ];
     }
 

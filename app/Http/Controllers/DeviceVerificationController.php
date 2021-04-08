@@ -21,9 +21,9 @@ class DeviceVerificationController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable|\Illuminate\Http\RedirectResponse
      */
-    final public function index(Request $request)
+    final public function index()
     {
-        if(Session::get('device_auth') === true){
+        if(session('device_auth') === true){
             return redirect(RouteServiceProvider::APP);
         }
 

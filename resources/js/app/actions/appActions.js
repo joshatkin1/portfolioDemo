@@ -4,6 +4,7 @@ import {
     TOGGLE_APP_NAV_VIEWABLE,
     OPEN_APP_NOTIF,
     CLOSE_APP_NOTIF,
+    FETCH_COMPANY_CLOUD_INFO,
 } from './actionTypes.js';
 
 export const navigateAppPage = (newPage) => dispatch => {

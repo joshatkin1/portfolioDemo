@@ -1911,12 +1911,12 @@ hr
 .lrg-inpt-lbl{
     width:100%;
     text-align: left;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Helvetica Neue', sans-serif;
     font-weight: 400;
     color:rgb(70,70,70);
-    font-size:14px;
+    font-size:15px;
     padding-bottom:4px;
-    letter-spacing:1px;
+    letter-spacing:0.5px;
 }
 .lrg-inpt, .lrg-slct{
     width:96%;
@@ -1925,7 +1925,7 @@ hr
     font-weight:300;
     letter-spacing: 1px;
     color:rgb(60,60,60);
-    border-radius:2px;
+    border-radius:4px;
     border:solid 1px #E6E6E6;
     background-color:white;
     max-width:450px;
@@ -1940,14 +1940,17 @@ hr
 
 .main-inpt{
     text-align: left;
-    font-family: 'Lato', sans-serif;
-    font-weight: bold;
+    font-family:'Helvetica', sans-serif;
     color:rgb(80,80,80);
-    font-size:14px;
+    font-size:15px;
     border :solid 1px lightgray;
-    letter-spacing:1px;
-    border-radius:2px;
+    letter-spacing:0.5px;
     background-color:white;
+    padding:8px 10px;
+    width:100%;
+    max-width:350px;
+    border-radius:5px;
+    font-weight: lighter;
 }
 .main-inpt:focus{
     border-color:#0087FF;
@@ -3770,4 +3773,12 @@ hr
 .cld-invt-btns{
     font-size:13px;
     padding:5px;
+}
+.linkBack{
+    padding-top:20px;
+    color:#1770E2;
+    cursor:pointer;
+}
+.linkBack:hover{
+    text-decoration: underline;
 }

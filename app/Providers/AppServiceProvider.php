@@ -17,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
         //REGISTER USER MODEL SINGLETON
         $this->app->singleton(User::class, function(){
             if(session('id')){
-                return User::where("id",session('id'))->first();
+                return User::where("id",'=', session('id'))->first();
             }else{
                 return User();
             }

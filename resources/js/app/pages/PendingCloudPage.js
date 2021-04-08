@@ -85,7 +85,10 @@ class PendingCloudPage extends Component {
                             </tbody>
                         </table>
                     </div>
-                    <button className={"excite-act-btn"} style={{marginTop:"40px"}}>Create Your Cloud</button>
+                    <button className={"excite-act-btn"}
+                            style={{marginTop:"40px"}}
+                            onClick={()=>{this.props.toggleCloudSignUp("true")}}
+                    >Create Your Cloud</button>
                 </div>
             </div>
         );

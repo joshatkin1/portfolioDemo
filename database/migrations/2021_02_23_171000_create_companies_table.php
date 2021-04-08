@@ -21,12 +21,7 @@ class CreateCompaniesTable extends Migration
             $table->string('company_number')->nullable();
             $table->string('company_email');
             $table->string('company_tel')->nullable();
-            $table->json('company_employees')->nullable();
             $table->integer('employee_count')->default(1);
-            $table->boolean('active_subscription')->default(0);
-            $table->bigInteger('storage_amount')->default(0);
-            $table->integer('subscribed_date')->default(0);
-            $table->integer('subscription_cost')->default(10);
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
             $table->timestamp('created_at')->useCurrent();
         });

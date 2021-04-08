@@ -18,18 +18,13 @@ use Illuminate\Support\Facades\Route;
 Route::post('/login', [App\Http\Controllers\ApiAuthenticationController::class, 'login']);
 Route::get('/logout', [App\Http\Controllers\ApiAuthenticationController::class, 'logout']);
 
-Route::group(['middleware' => 'auth:api'], function(){
-    Route::get('/me', function(Request $request){
-        $user = json_decode($request->user());
-        dd($user);
-        return response($request->user(), 200);
-    });
+Route::get('/verify-device', [App\Http\Controllers\DeviceVerificationController::class, 'index'])->name('device-verification');
+Route::get('verify-device/resend-code', [App\Http\Controllers\DeviceVerificationController::class, 'resendDeviceVerificationCode']);
+Route::post('/verify-device/submit', [App\Http\Controllers\DeviceVerificationController::class, 'submitDeviceVerificationCode']);
 
-    Route::get('/verify-device', [App\Http\Controllers\DeviceVerificationController::class, 'index'])->name('device-verification');
-    Route::get('verify-device/resend-code', [App\Http\Controllers\DeviceVerificationController::class, 'resendDeviceVerificationCode']);
-    Route::post('/verify-device/submit', [App\Http\Controllers\DeviceVerificationController::class, 'submitDeviceVerificationCode']);
 
-});
+Route::post('/app/cloud/registration/submit', [App\Http\Controllers\CompanyRegisterController::class, 'create']);
+
 
 Route::prefix('resources')->group(function () {
 
@@ -39,3 +34,4 @@ Route::prefix('resources')->group(function () {
     Route::get('/data/user/company/cloud/invitations', [App\Http\Controllers\UserController::class, 'fetchAllUsersCloudInvitations']);
 
 });
+

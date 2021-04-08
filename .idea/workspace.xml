@@ -21,111 +21,33 @@
   <component name="ChangeListManager">
     <list default="true" id="431b2a3c-cbbe-446e-b7d5-fd731793ae50" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/../.idea/LaravelSites.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/.env.example" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/.gitattributes" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/.idea/dnachecker.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/.idea/phpunit.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/.idea/watcherTasks.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/.styleci.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/app/Console/Kernel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/app/Exceptions/Handler.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/app/Http/Controllers/Controller.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/app/Http/Controllers/DnaCheckerController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/app/Http/Kernel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/app/Http/Middleware/Authenticate.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/app/Http/Middleware/EncryptCookies.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/app/Http/Middleware/PreventRequestsDuringMaintenance.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/app/Http/Middleware/RedirectIfAuthenticated.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/app/Http/Middleware/TrimStrings.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/app/Http/Middleware/TrustHosts.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/app/Http/Middleware/TrustProxies.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/app/Http/Middleware/VerifyCsrfToken.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/app/Models/DnaChecker.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/app/Models/User.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/app/Providers/AuthServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/app/Providers/BroadcastServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/app/Providers/EventServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/app/Providers/RouteServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/artisan" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/bootstrap/app.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/bootstrap/cache/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/composer.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/composer.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/config/app.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/config/auth.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/config/broadcasting.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/config/cache.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/config/cors.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/config/database.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/config/filesystems.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/config/hashing.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/config/logging.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/config/mail.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/config/queue.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/config/services.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/config/session.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/config/view.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/database/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/database/factories/UserFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/database/migrations/2014_10_12_100000_create_password_resets_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/database/migrations/2019_08_19_000000_create_failed_jobs_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/phpunit.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/public/.htaccess" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/public/css/app.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/public/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/public/js/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/public/mix-manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/public/robots.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/public/web.config" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/resources/js/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/resources/js/bootstrap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/resources/lang/en/auth.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/resources/lang/en/pagination.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/resources/lang/en/passwords.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/resources/lang/en/validation.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/resources/sass/_variables.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/resources/sass/app.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/resources/views/button.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/resources/views/dnachecker.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/resources/views/exception.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/resources/views/welcome.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/routes/api.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/routes/channels.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/routes/console.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/routes/web.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/server.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/storage/app/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/storage/app/public/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/storage/framework/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/storage/framework/cache/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/storage/framework/cache/data/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/storage/framework/sessions/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/storage/framework/testing/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/storage/framework/views/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/storage/logs/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/tests/CreatesApplication.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/tests/Feature/ExampleTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/tests/TestCase.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/tests/Unit/ExampleTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dnachecker/webpack.mix.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../softsync/.idea/masterplan.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../softsync/resources/js/actions/appActions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/CloudAccountController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/CloudAccount.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Policies/CompanyPolicy.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_08_181543_create_cloud_accounts_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/app/actions/cloudActions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/app/items/buttons/StandardInput.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/app/reducers/cloudReducers.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CompanyRegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CompanyRegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DeviceVerificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DeviceVerificationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/CompanyRegisterRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/CompanyRegisterRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Company.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Company.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_02_23_171000_create_companies_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_02_23_171000_create_companies_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/global.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app/AppController.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app/AppController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app/actions/actionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app/actions/actionTypes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app/actions/appActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app/actions/appActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app/pages/CompanySignUpPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app/pages/CompanySignUpPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app/pages/PendingCloudPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app/pages/PendingCloudPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app/reducers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -295,6 +217,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/js/profile/components/header" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -363,6 +286,7 @@
       <workItem from="1617656861800" duration="520000" />
       <workItem from="1617723930133" duration="10693000" />
       <workItem from="1617803982100" duration="8000" />
+      <workItem from="1617892343512" duration="12337000" />
     </task>
     <servers />
   </component>
@@ -398,12 +322,12 @@
       <screen x="0" y="25" width="1440" height="780" />
     </state>
     <state x="458" y="166" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.25.1440.780@0.25.1440.780" timestamp="1615331515655" />
-    <state x="430" y="173" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1617571078363">
-      <screen x="0" y="25" width="1440" height="776" />
+    <state x="430" y="175" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1617907256678">
+      <screen x="0" y="25" width="1440" height="785" />
     </state>
     <state x="430" y="173" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.25.1440.776@0.25.1440.776" timestamp="1617571078363" />
     <state x="430" y="174" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.25.1440.780@0.25.1440.780" timestamp="1615951513669" />
-    <state x="430" y="175" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.25.1440.785@0.25.1440.785" timestamp="1617150925709" />
+    <state x="430" y="175" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.25.1440.785@0.25.1440.785" timestamp="1617907256678" />
     <state x="285" y="60" key="#phpunit.xml" timestamp="1617158963816">
       <screen x="0" y="25" width="1440" height="781" />
     </state>
@@ -417,6 +341,14 @@
       <screen x="0" y="25" width="1440" height="780" />
     </state>
     <state x="741" y="342" key="NewPhpFileDialog/0.25.1440.780@0.25.1440.780" timestamp="1615369445212" />
+    <state x="137" y="49" key="SettingsEditor" timestamp="1617896650337">
+      <screen x="0" y="25" width="1440" height="785" />
+    </state>
+    <state x="137" y="49" key="SettingsEditor/0.25.1440.785@0.25.1440.785" timestamp="1617896650337" />
+    <state width="648" height="445" key="SwitcherDM" timestamp="1617813417684">
+      <screen x="0" y="25" width="1440" height="785" />
+    </state>
+    <state width="648" height="445" key="SwitcherDM/0.25.1440.785@0.25.1440.785" timestamp="1617813417684" />
     <state x="385" y="128" width="670" height="673" key="search.everywhere.popup" timestamp="1617730672381">
       <screen x="0" y="25" width="1440" height="776" />
     </state>

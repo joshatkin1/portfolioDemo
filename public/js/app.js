@@ -55003,8 +55003,17 @@ var AppController = /*#__PURE__*/function (_Component) {
       }
     }
   }, {
+    key: "toggleCloudSignUp",
+    value: function toggleCloudSignUp(toggle) {
+      this.setState({
+        signingUpCompany: toggle
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       var sessionData = this.props.sessionData;
       var _this$state3 = this.state,
           pageLoaded = _this$state3.pageLoaded,
@@ -55018,9 +55027,15 @@ var AppController = /*#__PURE__*/function (_Component) {
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "inr-content body-content-wrap algn-cntr"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, signingUpCompany ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_CompanySignUpPage_js__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        key: Object(uuid__WEBPACK_IMPORTED_MODULE_3__["v4"])()
+        key: Object(uuid__WEBPACK_IMPORTED_MODULE_3__["v4"])(),
+        toggleCloudSignUp: function toggleCloudSignUp(toggle) {
+          _this3.toggleCloudSignUp(toggle);
+        }
       }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_PendingCloudPage_js__WEBPACK_IMPORTED_MODULE_11__["default"], {
-        key: Object(uuid__WEBPACK_IMPORTED_MODULE_3__["v4"])()
+        key: Object(uuid__WEBPACK_IMPORTED_MODULE_3__["v4"])(),
+        toggleCloudSignUp: function toggleCloudSignUp(toggle) {
+          _this3.toggleCloudSignUp(toggle);
+        }
       })))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "content-wrap algn-cntr"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -55102,7 +55117,7 @@ appStore.subscribe(function () {
 /*!*************************************************!*\
   !*** ./resources/js/app/actions/actionTypes.js ***!
   \*************************************************/
-/*! exports provided: NAVIGATE_APP, NAVIGATE_CLOUD, TOGGLE_APP_NAV_VIEWABLE, OPEN_APP_NOTIF, CLOSE_APP_NOTIF, FETCH_SESSION_DATA, FETCH_USER_COMPANY_NAME, FETCH_USERS_CLOUD_INVITATIONS, NAVIGATE_ACCOUNT, NAVIGATE_ACCOUNT_PAGE_SECTION, TOGGLE_CLIENT_PAGE_SECTION, UPDATE_CLIENT_SEARCH_VALUE, CURRENT_CLIENT_DETAILS, SET_CLIENT_SEARCH_OPTIONS, SET_CURRENT_CLIENT_DETAILS, SET_CLIENT_SEARCH_PAGINATION_OPTIONS, ADD_RECENT_CLIENT_ACCOUNT */
+/*! exports provided: NAVIGATE_APP, NAVIGATE_CLOUD, TOGGLE_APP_NAV_VIEWABLE, OPEN_APP_NOTIF, CLOSE_APP_NOTIF, FETCH_COMPANY_CLOUD_DETAILS, FETCH_SESSION_DATA, FETCH_USER_COMPANY_NAME, FETCH_USERS_CLOUD_INVITATIONS, NAVIGATE_ACCOUNT, NAVIGATE_ACCOUNT_PAGE_SECTION, TOGGLE_CLIENT_PAGE_SECTION, UPDATE_CLIENT_SEARCH_VALUE, CURRENT_CLIENT_DETAILS, SET_CLIENT_SEARCH_OPTIONS, SET_CURRENT_CLIENT_DETAILS, SET_CLIENT_SEARCH_PAGINATION_OPTIONS, ADD_RECENT_CLIENT_ACCOUNT */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55112,6 +55127,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TOGGLE_APP_NAV_VIEWABLE", function() { return TOGGLE_APP_NAV_VIEWABLE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OPEN_APP_NOTIF", function() { return OPEN_APP_NOTIF; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLOSE_APP_NOTIF", function() { return CLOSE_APP_NOTIF; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_COMPANY_CLOUD_DETAILS", function() { return FETCH_COMPANY_CLOUD_DETAILS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_SESSION_DATA", function() { return FETCH_SESSION_DATA; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_USER_COMPANY_NAME", function() { return FETCH_USER_COMPANY_NAME; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_USERS_CLOUD_INVITATIONS", function() { return FETCH_USERS_CLOUD_INVITATIONS; });
@@ -55129,7 +55145,8 @@ var NAVIGATE_APP = 'NAVIGATE_APP';
 var NAVIGATE_CLOUD = 'NAVIGATE_CLOUD';
 var TOGGLE_APP_NAV_VIEWABLE = 'TOGGLE_APP_NAV_VIEWABLE';
 var OPEN_APP_NOTIF = 'OPEN_APP_NOTIF';
-var CLOSE_APP_NOTIF = 'CLOSE_APP_NOTIF'; //USER ACTION TYPES
+var CLOSE_APP_NOTIF = 'CLOSE_APP_NOTIF';
+var FETCH_COMPANY_CLOUD_DETAILS = 'FETCH_COMPANY_CLOUD_DETAILS'; //USER ACTION TYPES
 
 var FETCH_SESSION_DATA = 'FETCH_SESSION_DATA';
 var FETCH_USER_COMPANY_NAME = 'FETCH_USER_COMPANY_NAME';
@@ -55199,6 +55216,42 @@ var closeAppNotif = function closeAppNotif() {
   return function (dispatch) {
     dispatch({
       type: _actionTypes_js__WEBPACK_IMPORTED_MODULE_0__["OPEN_APP_NOTIF"]
+    });
+  };
+};
+
+/***/ }),
+
+/***/ "./resources/js/app/actions/cloudActions.js":
+/*!**************************************************!*\
+  !*** ./resources/js/app/actions/cloudActions.js ***!
+  \**************************************************/
+/*! exports provided: submitCompanyCloudRegistration */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "submitCompanyCloudRegistration", function() { return submitCompanyCloudRegistration; });
+/* harmony import */ var _actionTypes_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./actionTypes.js */ "./resources/js/app/actions/actionTypes.js");
+
+var submitCompanyCloudRegistration = function submitCompanyCloudRegistration(data) {
+  return function (dispatch) {
+    axios({
+      method: 'POST',
+      url: 'api/app/cloud/registration/submit',
+      validateStatus: function validateStatus() {
+        return true;
+      },
+      data: data
+    }).then(function (response) {
+      if (response.status === 200) {
+        dispatch({
+          type: _actionTypes_js__WEBPACK_IMPORTED_MODULE_0__["FETCH_COMPANY_CLOUD_DETAILS"],
+          payload: response.data
+        });
+      } else {}
+    })["catch"](function (errors) {
+      console.log(errors);
     });
   };
 };
@@ -56348,6 +56401,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! uuid */ "./node_modules/uuid/index.js");
 /* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(uuid__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _actions_appActions_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../actions/appActions.js */ "./resources/js/app/actions/appActions.js");
+/* harmony import */ var _actions_cloudActions_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../actions/cloudActions.js */ "./resources/js/app/actions/cloudActions.js");
 function _typeof(obj) {
   "@babel/helpers - typeof";
 
@@ -56362,6 +56416,21 @@ function _typeof(obj) {
   }
 
   return _typeof(obj);
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
 }
 
 function _classCallCheck(instance, Constructor) {
@@ -56471,6 +56540,7 @@ function _getPrototypeOf(o) {
 
 
 
+
 var CompanySignUpPage = /*#__PURE__*/function (_Component) {
   _inherits(CompanySignUpPage, _Component);
 
@@ -56482,7 +56552,12 @@ var CompanySignUpPage = /*#__PURE__*/function (_Component) {
     _classCallCheck(this, CompanySignUpPage);
 
     _this = _super.call(this, props);
-    _this.state = {};
+    _this.state = {
+      company_name: "",
+      company_industry: "",
+      company_email: "",
+      company_telephone: ""
+    };
     return _this;
   }
 
@@ -56494,28 +56569,183 @@ var CompanySignUpPage = /*#__PURE__*/function (_Component) {
   }, {
     key: "shouldComponentUpdate",
     value: function shouldComponentUpdate(nextProps, nextState, nextContext) {
+      var _this$state = this.state,
+          company_name = _this$state.company_name,
+          company_industry = _this$state.company_industry,
+          company_email = _this$state.company_email,
+          company_telephone = _this$state.company_telephone;
+
+      if (!_.isEqual(this.state, nextState)) {
+        return true;
+      }
+
       return false;
+    }
+  }, {
+    key: "submitCompanyCloudRegistration",
+    value: function submitCompanyCloudRegistration() {
+      var _this$state2 = this.state,
+          company_name = _this$state2.company_name,
+          company_industry = _this$state2.company_industry,
+          company_email = _this$state2.company_email,
+          company_telephone = _this$state2.company_telephone;
+      var data = {
+        company_name: company_name,
+        company_industry: company_industry,
+        company_email: company_email,
+        company_telephone: company_telephone
+      };
+      this.props.submitCompanyCloudRegistration(data);
     }
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
+      var _this$state3 = this.state,
+          company_name = _this$state3.company_name,
+          company_industry = _this$state3.company_industry,
+          company_email = _this$state3.company_email,
+          company_telephone = _this$state3.company_telephone;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "content-wrap wrap-start"
-      }, "company sign up page");
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "content",
+        style: {
+          paddingTop: "20px"
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "wrap-start"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "linkBack",
+        onClick: function onClick() {
+          _this2.props.toggleCloudSignUp(false);
+        }
+      }, "Invitatons"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "linkBack"
+      }, " | Cloud Sign Up")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        style: {
+          marginTop: "20px",
+          maxWidth: "800px",
+          color: "#1770E2",
+          fontWeight: "lighter",
+          letterSpacing: "3px"
+        }
+      }, "Create Your Company Cloud."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        style: {
+          fontSize: "21px",
+          marginTop: "20px"
+        }
+      }, "Please register your company information below to get started."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "align-top",
+        style: {
+          marginTop: "40px"
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-input-div"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "lrg-inpt-lbl"
+      }, "Company Name *"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "company_name",
+        className: "main-inpt",
+        name: "company_name",
+        type: "text",
+        autoComplete: "off",
+        required: "required",
+        autoFocus: true,
+        value: company_name,
+        onChange: function onChange(event) {
+          _this2.setState(_defineProperty({}, event.target.name, event.target.value));
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "invalid-feedback",
+        role: "alert"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-input-div"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "lrg-inpt-lbl"
+      }, "Sector/Industry *"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "company_industry",
+        className: "main-inpt",
+        name: "company_industry",
+        type: "text",
+        autoComplete: "off",
+        required: "required",
+        autoFocus: true,
+        value: company_industry,
+        onChange: function onChange(event) {
+          _this2.setState(_defineProperty({}, event.target.name, event.target.value));
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "invalid-feedback",
+        role: "alert"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-input-div"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "lrg-inpt-lbl"
+      }, "Company Email *"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "company_email",
+        className: "main-inpt",
+        name: "company_email",
+        type: "text",
+        autoComplete: "off",
+        required: "required",
+        autoFocus: true,
+        value: company_email,
+        onChange: function onChange(event) {
+          _this2.setState(_defineProperty({}, event.target.name, event.target.value));
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "invalid-feedback",
+        role: "alert"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-input-div"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "lrg-inpt-lbl"
+      }, "Company Telephone *"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "company_telephone",
+        className: "main-inpt",
+        name: "company_telephone",
+        type: "text",
+        autoComplete: "off",
+        required: "required",
+        autoFocus: true,
+        value: company_telephone,
+        onChange: function onChange(event) {
+          _this2.setState(_defineProperty({}, event.target.name, event.target.value));
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "invalid-feedback",
+        role: "alert"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-input-div",
+        style: {
+          marginTop: "20px"
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "excite-act-btn",
+        onClick: function onClick() {
+          _this2.submitCompanyCloudRegistration();
+        }
+      }, "Continue Sign Up")))));
     }
   }]);
 
   return CompanySignUpPage;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-CompanySignUpPage.propTypes = {};
+CompanySignUpPage.propTypes = {
+  navigateAppPage: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.func.isRequired,
+  submitCompanyCloudRegistration: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.func.isRequired
+};
 
 var mapStateToProps = function mapStateToProps(state) {
   return {};
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {
-  navigateAppPage: _actions_appActions_js__WEBPACK_IMPORTED_MODULE_4__["navigateAppPage"]
+  navigateAppPage: _actions_appActions_js__WEBPACK_IMPORTED_MODULE_4__["navigateAppPage"],
+  submitCompanyCloudRegistration: _actions_cloudActions_js__WEBPACK_IMPORTED_MODULE_5__["submitCompanyCloudRegistration"]
 })(CompanySignUpPage));
 
 /***/ }),
@@ -57128,6 +57358,8 @@ var PendingCloudPage = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "content-wrap wrap-start"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -57168,6 +57400,9 @@ var PendingCloudPage = /*#__PURE__*/function (_Component) {
         className: "excite-act-btn",
         style: {
           marginTop: "40px"
+        },
+        onClick: function onClick() {
+          _this3.props.toggleCloudSignUp("true");
         }
       }, "Create Your Cloud")));
     }
@@ -57542,6 +57777,87 @@ var initialState = {
 
 /***/ }),
 
+/***/ "./resources/js/app/reducers/cloudReducers.js":
+/*!****************************************************!*\
+  !*** ./resources/js/app/reducers/cloudReducers.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_actionTypes_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/actionTypes.js */ "./resources/js/app/actions/actionTypes.js");
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly) symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    });
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+
+    if (i % 2) {
+      ownKeys(Object(source), true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(Object(source)).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
+    }
+  }
+
+  return target;
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+
+var initialState = {
+  companyDetails: {}
+};
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case 'FETCH_COMPANY_CLOUD_DETAILS':
+      return _objectSpread(_objectSpread({}, state), {}, {
+        companyDetails: action.payload
+      });
+      break;
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/js/app/reducers/index.js":
 /*!********************************************!*\
   !*** ./resources/js/app/reducers/index.js ***!
@@ -57556,6 +57872,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _userReducers_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./userReducers.js */ "./resources/js/app/reducers/userReducers.js");
 /* harmony import */ var _clientReducers_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./clientReducers.js */ "./resources/js/app/reducers/clientReducers.js");
 /* harmony import */ var _accountReducers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./accountReducers */ "./resources/js/app/reducers/accountReducers.js");
+/* harmony import */ var _cloudReducers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./cloudReducers */ "./resources/js/app/reducers/cloudReducers.js");
+
 
 
 
@@ -57565,7 +57883,8 @@ __webpack_require__.r(__webpack_exports__);
   app: _appReducers_js__WEBPACK_IMPORTED_MODULE_1__["default"],
   user: _userReducers_js__WEBPACK_IMPORTED_MODULE_2__["default"],
   client: _clientReducers_js__WEBPACK_IMPORTED_MODULE_3__["default"],
-  account: _accountReducers__WEBPACK_IMPORTED_MODULE_4__["default"]
+  account: _accountReducers__WEBPACK_IMPORTED_MODULE_4__["default"],
+  cloud: _cloudReducers__WEBPACK_IMPORTED_MODULE_5__["default"]
 }));
 
 /***/ }),
