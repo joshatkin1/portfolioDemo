@@ -5,7 +5,7 @@
     <section class="container" style="margin-top: 70px;">
         <div id="landingheader">
             <div class="ldngheadsec">
-                <h1 id='lndgpgwebname'>workcloud</h1>
+                <h1 id='lndgpgwebname'>portfolioDemo</h1>
                 <p id="lndgpgheadp">everything work.</p>
             </div>
             <div class="ldngheadsec">

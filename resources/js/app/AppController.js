@@ -111,7 +111,7 @@ class AppController extends Component{
                         </>
                         :
                         <div className={"content-wrap algn-cntr loading-page-dv"}>
-                            <h4 className="webtitle">workcloud</h4>
+                            <h4 className="webtitle">portfolioDemo</h4>
                             <div className={"page-loading-bar"}>
                                 <div className={"page-loading-bar-inr"}></div>
                             </div>

@@ -104,8 +104,8 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-!(function webpackMissingModule() { var e = new Error("Cannot find module '/Users/Atkin/Documents/LaravelSites/workcloud/resources/js/account.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-module.exports = __webpack_require__(/*! /Users/Atkin/Documents/LaravelSites/workcloud/resources/sass/app.scss */"./resources/sass/app.scss");
+!(function webpackMissingModule() { var e = new Error("Cannot find module '/Users/Atkin/Documents/LaravelSites/portfolioDemo/resources/js/account.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+module.exports = __webpack_require__(/*! /Users/Atkin/Documents/LaravelSites/portfolioDemo/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

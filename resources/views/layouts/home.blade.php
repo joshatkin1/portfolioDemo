@@ -21,7 +21,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
-    <title>{{ config('app.name', 'workcloud') }}</title>
+    <title>{{ config('app.name', 'portfolioDemo') }}</title>
 
     <!-- JS Scripts -->
 <!-- <script src="{{ asset('js/app.js') }}" defer></script>-->
@@ -36,7 +36,7 @@
     <div class="innerheader">
         <nav class="navbar">
             <a href="{{ url('/') }}">
-                <h4 class="webtitle">workcloud</h4>
+                <h4 class="webtitle">portfolioDemo</h4>
             </a>
             <div id="pagenavs">
                 <a class="pagenavbtns bluhvrtxtbtns">Find Jobs</a>

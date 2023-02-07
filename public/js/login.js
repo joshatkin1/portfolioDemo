@@ -45356,7 +45356,7 @@ function injectIntoDevTools(devToolsConfig) {
     // Enables DevTools to append owner stacks to error messages in DEV mode.
     getCurrentFiber:  function () {
       return current;
-    } 
+    }
   }));
 }
 var IsSomeRendererActing$1 = ReactSharedInternals.IsSomeRendererActing;
@@ -49954,9 +49954,9 @@ function LoginComponent() {
     href: "/"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
     id: "lgnpghdr"
-  }, "workcloud")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+  }, "portfolioDemo")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     id: "sgninp"
-  }, "Sign in to workcloud"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+  }, "Sign in to portfolioDemo"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     id: "sgninform",
     className: "loginform"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -50015,7 +50015,7 @@ function LoginComponent() {
     className: "loginform create-acnt-btn"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "lgnsecadhds"
-  }, "New to workcloud?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+  }, "New to portfolioDemo?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "lgnseclnks"
   }, "Create Account")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "lgnlnksec"
@@ -50047,7 +50047,7 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/Atkin/Documents/LaravelSites/workcloud/resources/js/login.js */"./resources/js/login.js");
+module.exports = __webpack_require__(/*! /Users/Atkin/Documents/LaravelSites/portfolioDemo/resources/js/login.js */"./resources/js/login.js");
 
 
 /***/ })

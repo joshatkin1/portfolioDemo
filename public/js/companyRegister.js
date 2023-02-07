@@ -46083,7 +46083,7 @@ function injectIntoDevTools(devToolsConfig) {
     // Enables DevTools to append owner stacks to error messages in DEV mode.
     getCurrentFiber:  function () {
       return current;
-    } 
+    }
   }));
 }
 var IsSomeRendererActing$1 = ReactSharedInternals.IsSomeRendererActing;
@@ -47303,7 +47303,7 @@ __webpack_require__.r(__webpack_exports__);
   selectorFactory, which has the signature:
 
     (dispatch, options) => (nextState, nextOwnProps) => nextFinalProps
-  
+
   connect passes its args to connectAdvanced as options, which will in turn pass them to
   selectorFactory each time a Connect component instance is instantiated or hot reloaded.
 
@@ -55009,7 +55009,7 @@ var CompanyRegisterComponent = /*#__PURE__*/function (_Component) {
           fontSize: "23px",
           lineHeight: "1.4"
         }
-      }, "Subscribe to workcloud and drive your business further ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " with better management, control & collaboration."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Subscribe to portfolioDemo and drive your business further ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " with better management, control & collaboration."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "comp-reg-form"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         style: {
@@ -55407,7 +55407,7 @@ var HeaderComponent = /*#__PURE__*/function (_Component) {
         href: '/account'
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
         className: "webtitle"
-      }, "workcloud"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "portfolioDemo"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-9 wrap-end algn-cntr"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "algn-cntr wrap-end"
@@ -55481,7 +55481,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/Atkin/Documents/LaravelSites/workcloud/resources/js/companyRegister.js */"./resources/js/companyRegister.js");
+module.exports = __webpack_require__(/*! /Users/Atkin/Documents/LaravelSites/portfolioDemo/resources/js/companyRegister.js */"./resources/js/companyRegister.js");
 
 
 /***/ })

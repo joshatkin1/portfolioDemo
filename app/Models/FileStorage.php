@@ -50,7 +50,7 @@ class FileStorage extends Model
 
     final protected function determineCompanyStorageSize(){
         //foldersize();
-        //SELECT ROUND(((DATA_LENGTH + INDEX_LENGTH) / 1024 / 1024),2) FROM  information_schema.TABLES WHERE TABLE_SCHEMA = "workcloud" AND TABLE_NAME = "users";
+        //SELECT ROUND(((DATA_LENGTH + INDEX_LENGTH) / 1024 / 1024),2) FROM  information_schema.TABLES WHERE TABLE_SCHEMA = "portfolioDemo" AND TABLE_NAME = "users";
     }
 
     final protected function fileSizeLimitCheck($file_size, $file_purpose){

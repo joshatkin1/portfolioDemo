@@ -4,7 +4,7 @@
     <div class="centercontent" style="height:100vh;align-content: center;">
         <div class="centercontent" style="margin-top:-10vh;">
             <div id="vrfy-dvc-hd">
-                <a href="/"><h1 id="lgnpghdr">workcloud</h1></a>
+                <a href="/"><h1 id="lgnpghdr">portfolioDemo</h1></a>
                 <p id="vrfydvcp">Two-factor authentication</p>
                 <p style="text-align:left;margin-top:30px;line-height:1.3;font-size:15px;">We have emailed you a secure code, please input this code below to verify your device.</p>
             </div>

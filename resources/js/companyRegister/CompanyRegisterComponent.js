@@ -90,7 +90,7 @@ class CompanyRegisterComponent extends Component{
                 {formStep === 1 ?
                         <div className={"body-content-wrap container wrap-start"}>
                             <h3 className={"cmpreghd"}>Create a free company cloud account.</h3>
-                            <p style={{fontSize:"23px",lineHeight:"1.4"}}>Subscribe to workcloud and drive your business further <br/> with better management, control & collaboration.</p>
+                            <p style={{fontSize:"23px",lineHeight:"1.4"}}>Subscribe to portfolioDemo and drive your business further <br/> with better management, control & collaboration.</p>
                             <div id={"comp-reg-form"}>
                                 <p style={{fontSize:"25px", color:"#1770E2"}}>Company Details</p>
                                 <div className={"regcmpinptdiv"}>

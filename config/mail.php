@@ -84,8 +84,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'team@workcloud.com'),
-        'name' => env('MAIL_FROM_NAME', 'Workcloud'),
+        'address' => env('MAIL_FROM_ADDRESS', 'team@portfolioDemo.com'),
+        'name' => env('MAIL_FROM_NAME', 'portfolioDemo'),
     ],
 
     /*

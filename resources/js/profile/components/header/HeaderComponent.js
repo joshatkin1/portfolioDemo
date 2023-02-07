@@ -20,7 +20,7 @@ class HeaderComponent extends Component{
     }
 
     render(){
-        var {workCloudPage} = this.props;
+        var {portfolioDemoPage} = this.props;
         return (
             <header className={"header-bar container-row wrap-middle algn-cntr"}>
                 <div className={"col-6 wrap-start algn-cntr"}
@@ -28,7 +28,7 @@ class HeaderComponent extends Component{
                      onDoubleClick={()=>{window.location.href = "/profile";}}
                 >
                     <a href={'/profile'}>
-                        <h4 className="webtitle">workcloud</h4>
+                        <h4 className="webtitle">portfolioDemo</h4>
                     </a>
                 </div>
                 <div className={"col-6 wrap-end algn-cntr"}>

@@ -37,7 +37,7 @@ class HeaderComponent extends Component{
             <header className={"header-bar wrap-middle algn-cntr"}>
                 <div className={"col-3 wrap-start algn-cntr"}>
                     <a href={'/account'}>
-                        <h4 className="webtitle">workcloud</h4>
+                        <h4 className="webtitle">portfolioDemo</h4>
                     </a>
                 </div>
                 <div className={"col-9 wrap-end algn-cntr"}>

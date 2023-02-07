@@ -126,7 +126,7 @@ class ApiAuthenticationController extends Controller
     {
         auth()->logout();
         $request->session()->flush();
-        return redirect('/login', 302)->withCookies([Cookie::forget('jwt'),Cookie::forget('workcloud_session')]);
+        return redirect('/login', 302)->withCookies([Cookie::forget('jwt'),Cookie::forget('portfolioDemo_session')]);
     }
 
     /**

@@ -2,8 +2,8 @@
 @section('content')
     <div class="container" style="height:100vh;justify-content: center;">
         <div id="loginpagecnt">
-            <a href="/"><h1 id="lgnpghdr">workcloud</h1></a>
-            <p id="sgninp">Sign in to workcloud</p>
+            <a href="/"><h1 id="lgnpghdr">portfolioDemo</h1></a>
+            <p id="sgninp">Sign in to portfolioDemo</p>
             <form id="sgninform" method="POST" action="/api/login" enctype="application/x-www-form-urlencoded" class="loginform">
                 @csrf
                 <div class="lgnfrminptsec">
@@ -30,7 +30,7 @@
                 <button id="sgninbtn" name="submit" type="submit">Sign in</button>
             </form>
             <a href="/"  class="loginform create-acnt-btn">
-                <p class="lgnsecadhds">New to workcloud?</p>
+                <p class="lgnsecadhds">New to portfolioDemo?</p>
                 <p class="lgnseclnks">Create Account</p>
             </a>
             <div id="lgnlnksec">

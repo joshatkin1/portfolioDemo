@@ -46083,7 +46083,7 @@ function injectIntoDevTools(devToolsConfig) {
     // Enables DevTools to append owner stacks to error messages in DEV mode.
     getCurrentFiber:  function () {
       return current;
-    } 
+    }
   }));
 }
 var IsSomeRendererActing$1 = ReactSharedInternals.IsSomeRendererActing;
@@ -47303,7 +47303,7 @@ __webpack_require__.r(__webpack_exports__);
   selectorFactory, which has the signature:
 
     (dispatch, options) => (nextState, nextOwnProps) => nextFinalProps
-  
+
   connect passes its args to connectAdvanced as options, which will in turn pass them to
   selectorFactory each time a Connect component instance is instantiated or hot reloaded.
 
@@ -55050,7 +55050,7 @@ var AppController = /*#__PURE__*/function (_Component) {
         className: "content-wrap algn-cntr loading-page-dv"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
         className: "webtitle"
-      }, "workcloud"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "portfolioDemo"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "page-loading-bar"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "page-loading-bar-inr"
@@ -56166,7 +56166,7 @@ var HeaderComponent = /*#__PURE__*/function (_Component) {
         href: '/app'
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
         className: "webtitle"
-      }, "workcloud"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "portfolioDemo"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-9 wrap-end algn-cntr"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AppNavButtons_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
         key: Object(uuid__WEBPACK_IMPORTED_MODULE_3__["v4"])()
@@ -58024,7 +58024,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/Atkin/Documents/LaravelSites/workcloud/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/Atkin/Documents/LaravelSites/portfolioDemo/resources/js/app.js */"./resources/js/app.js");
 
 
 /***/ })

@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'workcloud'),
+    'name' => env('APP_NAME', 'portfolioDemo'),
 
     /*
     |--------------------------------------------------------------------------

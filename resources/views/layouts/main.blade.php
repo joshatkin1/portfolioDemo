@@ -19,7 +19,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'workcloud') }}</title>
+    <title>{{ config('app.name', 'portfolioDemo') }}</title>
 
     <!-- JS Scripts -->
 <!-- <script src="{{ asset('js/app.js') }}" defer></script>-->
